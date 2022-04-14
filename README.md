@@ -1,11 +1,10 @@
 <h1 align="center">Olá 👋, me chamo Franclin</h1>
+<img align="right" src="https://komarev.com/ghpvc/?username=fssou&label=views&color=0e75b6&style=flat" alt="fssou" />
+
 <h3 align="center">Sou desenvolvedor backend apaixonado do Brasil.</h3>
 
 
-<p align="right" style="margin-top: 35px">
-    <img src="https://komarev.com/ghpvc/?username=fssou&label=views&color=0e75b6&style=flat" alt="fssou" />
- </p>
-<p align="left" >
+<p align="left" style="margin-top: 35px">
     <a href="https://twitter.com/fssouoficial" target="blank">
         <img src="https://img.shields.io/twitter/follow/fssouoficial?logo=twitter&style=for-the-badge" alt="fssouoficial" />
     </a>
@@ -69,10 +68,10 @@
 <h3 align="left" style="margin-bottom: 15px; margin-top: 35px">Estatísticas:</h3>
 
 
-<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-top: 15px" src="https://github-readme-stats.vercel.app/api/top-langs?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt-br&layout=compact" alt="fssou" /></p>
+<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-bottom: 25px" src="https://github-readme-stats.vercel.app/api/top-langs?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt-br&layout=compact" alt="fssou" /></p>
 
-<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-top: 15px" src="https://github-readme-stats.vercel.app/api?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt-br" alt="fssou" /></p>
+<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-bottom: 25px" src="https://github-readme-stats.vercel.app/api?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt-br" alt="fssou" /></p>
 
-<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-top: 15px" src="https://github-readme-streak-stats.herokuapp.com/?user=fssou&theme=dark" alt="fssou" /></p>
+<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-bottom: 25px" src="https://github-readme-streak-stats.herokuapp.com/?user=fssou&theme=dark" alt="fssou" /></p>
 
-<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-top: 15px" src="https://github-profile-trophy.vercel.app/?username=fssou" alt="fssou" /></p>
+<p><img align="left" style="margin-left: 15px; margin-right: 15px; margin-bottom: 25px" src="https://github-profile-trophy.vercel.app/?username=fssou" alt="fssou" /></p>
