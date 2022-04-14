@@ -55,8 +55,8 @@
 <h3 align="left">Suporte:</h3>
 <p><a href="https://www.buymeacoffee.com/fssou"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="fssou" /></a><a href="https://ko-fi.com/fssou"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="fssou" /></a></p><br><br>
 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt&layout=compact" alt="fssou" /></p>
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt_br&layout=compact" alt="fssou" /></p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=en" alt="fssou" /></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=fssou&show_icons=true&theme=dark&hide_border=true&locale=pt_br" alt="fssou" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=fssou&theme=dark" alt="fssou" /></p>
