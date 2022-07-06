@@ -36,7 +36,7 @@
 
 <h3 align="left" style="margin-bottom: 15px; margin-top: 35px">Conecte-se comigo:</h3>
 <p align="left">
-<a href="https://codepen.io/fssoupen" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codepen.svg" alt="fssoupen" height="30" width="40" /></a>
+<a href="https://codepen.io/fssou" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codepen.svg" alt="fssou" height="30" width="40" /></a>
 <a href="https://dev.to/fssou" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/devto.svg" alt="fssou" height="30" width="40" /></a>
 <a href="https://twitter.com/fssouoficial" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="fssouoficial" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/fssou" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="fssou" height="30" width="40" /></a>
