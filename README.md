@@ -1,7 +1,7 @@
 <h1 align="center">Olá 👋, me chamo Franclin</h1>
 <img align="right" src="https://komarev.com/ghpvc/?username=fssou&label=views&color=0e75b6&style=flat" alt="fssou" />
 
-<h3 align="center">Sou desenvolvedor backend apaixonado do Brasil.</h3>
+<h3 align="center">Sou desenvolvedor backend.</h3>
 
 
 <p align="left" style="margin-top: 35px">
