@@ -1,16 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  dev: process.env.NODE_ENV !== "production",
+  $development: {
+    devtools: { 
+      enabled: true 
+    },
+    webpack: {
+      loaders: {
+        vue: {
+          hotReload: true,
+        },
+      },
+    },
+  },
   ssr: false,
-  devtools: { 
-    enabled: false 
-  },
-  webpack: {
-    loaders: {
-      vue: {
-        hotReload: false,
-      }
-    }
-  },
   app: {
     head: {
       title: "Franclin Sousa",

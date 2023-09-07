@@ -5,10 +5,12 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
+  paths-ignore:
+    - '*.md'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+    
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -23,7 +25,8 @@ concurrency:
 
 env:
   repo-basedir-ghpages: gh-pages
-  artifact_name: github-pages-fssou
+  artifact-name: github-pages-fssou
+  build-output-dir: .output
   
 jobs:
   build:
@@ -66,7 +69,7 @@ jobs:
           path: |
             .output
             .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('.output') }}
+          key: ${{ runner.os }}-nuxt-build-${{ hashFiles(env.build-output-dir) }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Dependencies
@@ -76,12 +79,13 @@ jobs:
         working-directory: ${{ env.repo-basedir-ghpages }}
         env:
           BASE_PATH: ${{ steps.setup-pages.outputs.base_path }}
+          NODE_ENV: production
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: ${{ env.artifact_name }}
-          path: ${{ env.repo-basedir-ghpages }}/.output
+          name: ${{ env.artifact-name }}
+          path: ${{ env.repo-basedir-ghpages }}/${{ env.build-output-dir }}/public
   deploy:
     name: Deploy
     environment:
@@ -94,4 +98,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: ${{ env.artifact_name }}
+          artifact_name: ${{ env.artifact-name }}
