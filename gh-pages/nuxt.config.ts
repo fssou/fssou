@@ -71,7 +71,7 @@ export default defineNuxtConfig({
           tagPosition: "bodyClose"
         },
         {
-          textContent: `window.dataLayer = window.dataLayer || [];
+          innerHTML: `window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'UA-113075411-1');`,
