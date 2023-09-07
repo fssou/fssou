@@ -29,35 +29,38 @@ export default defineNuxtConfig({
       link: [
         {
           rel: "shortcut icon",
-          href: "images/favicon.png",
-          type: "image/x-icon"
+          href: "/images/favicon.png",
+          type: "image/x-icon",
         },
         {
           rel: "stylesheet",
-          href: "assets/css/main.css"
+          type: "text/css",
+          href: "/assets/css/main.css",
         }
       ],
       noscript: [
         {
           key: "noscrript-css",
-          innerHTML: '<link rel="stylesheet" href="assets/css/noscript.css" />'
+          innerHTML: '<link rel="stylesheet" href="/assets/css/noscript.css" />'
         }
       ],
       script: [
         {
           src: "https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js",
+          integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=",
+          crossorigin: "anonymous"
           tagPosition: "bodyClose"
         },
         {
-          src: "assets/js/browser.min.js",
+          src: "/assets/js/browser.min.js",
           tagPosition: "bodyClose"
         },
         {
-          src: "assets/js/breakpoints.min.js",
+          src: "/assets/js/breakpoints.min.js",
           tagPosition: "bodyClose"
         },
         {
-          src: "assets/js/main.js",
+          src: "/assets/js/main.js",
           tagPosition: "bodyClose"
         },
         {
