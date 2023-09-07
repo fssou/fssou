@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="image filtered span-1-75" data-position="25% 25%">
-                    <img :src="'/images/fssou/IMG_20180909_144331_082.jpg'" alt="" />
+                    <img :src="'images/fssou/IMG_20180909_144331_082.jpg'" alt="" />
                 </div>
             </section>
 
@@ -45,7 +45,7 @@
                     </p>
                 </div>
                 <div class="image filtered tinted" data-position="middle left">
-                    <img style="transform: scaleX(-1);" :src="'/images/fssou/IMG_00123134343.jpg'" alt="" />
+                    <img style="transform: scaleX(-1);" :src="'images/fssou/IMG_00123134343.jpg'" alt="" />
                 </div>
             </section>
 
@@ -113,37 +113,37 @@
                 <div class="gallery">
 
                     <div class="group span-3">
-                        <a h:ref="'/images/fssou/IMG_9390.JPG'" class="image filtered span-3" data-position="middle">
-                            <img :src="'/images/fssou/IMG_9390.JPG'" alt="" />
+                        <a h:ref="'images/fssou/IMG_9390.JPG'" class="image filtered span-3" data-position="middle">
+                            <img :src="'images/fssou/IMG_9390.JPG'" alt="" />
                         </a>
-                        <a h:ref="'/images/fssou/IMG_0137.jpg'" class="image filtered span-1-5" data-position="center">
-                            <img :src="'/images/fssou/IMG_0137.jpg'" alt="" />
+                        <a h:ref="'images/fssou/IMG_0137.jpg'" class="image filtered span-1-5" data-position="center">
+                            <img :src="'images/fssou/IMG_0137.jpg'" alt="" />
                         </a>
-                        <a h:ref="'/images/fssou/20190515_115735.jpg'" class="image filtered span-1-5" data-position="bottom right">
-                            <img :src="'/images/fssou/20190515_115735.jpg'" alt="" />
+                        <a h:ref="'images/fssou/20190515_115735.jpg'" class="image filtered span-1-5" data-position="bottom right">
+                            <img :src="'images/fssou/20190515_115735.jpg'" alt="" />
                         </a>
                     </div>
 
-                    <a h:ref="'/images/fssou/IMG_9485484.jpg'" class="image filtered span-2-5" data-position="center">
-                        <img :src="'/images/fssou/IMG_9485484.jpg'" alt="" />
+                    <a h:ref="'images/fssou/IMG_9485484.jpg'" class="image filtered span-2-5" data-position="center">
+                        <img :src="'images/fssou/IMG_9485484.jpg'" alt="" />
                     </a>
 
                     <div class="group span-3">
-                        <a h:ref="'/images/fssou/IMG_8375.jpg'" class="image filtered span-3" data-position="top">
-                            <img :src="'/images/fssou/IMG_8375.jpg'" alt="" />
+                        <a h:ref="'images/fssou/IMG_8375.jpg'" class="image filtered span-3" data-position="top">
+                            <img :src="'images/fssou/IMG_8375.jpg'" alt="" />
                         </a>
-                        <a h:ref="'/images/fssou/327316201_581481610107176_3544378201851624978_n.jpg'" class="image filtered span-1-5" data-position="top left">
-                            <img :src="'/images/fssou/327316201_581481610107176_3544378201851624978_n.jpg'" alt="" />
+                        <a h:ref="'images/fssou/327316201_581481610107176_3544378201851624978_n.jpg'" class="image filtered span-1-5" data-position="top left">
+                            <img :src="'images/fssou/327316201_581481610107176_3544378201851624978_n.jpg'" alt="" />
                         </a>
-                        <a h:ref="'/images/fssou/IMG_20191122_WA0039.jpg'" class="image filtered span-1-5" data-position="top left">
-                            <img :src="'/images/fssou/IMG_20191122_WA0039.jpg'" alt="" />
+                        <a h:ref="'images/fssou/IMG_20191122_WA0039.jpg'" class="image filtered span-1-5" data-position="top left">
+                            <img :src="'images/fssou/IMG_20191122_WA0039.jpg'" alt="" />
                         </a>
                     </div>
-                    <a h:ref="'/images/fssou/IMG_00123123.jpg'" class="image filtered span-3-5" data-position="top center">
-                        <img :src="'/images/fssou/IMG_00123123.jpg'" alt="" />
+                    <a h:ref="'images/fssou/IMG_00123123.jpg'" class="image filtered span-3-5" data-position="top center">
+                        <img :src="'images/fssou/IMG_00123123.jpg'" alt="" />
                     </a>
-                    <a h:ref="'/images/fssou/20180728_220539.jpg'" class="image filtered span-1-5" data-position="top">
-                        <img :src="'/images/fssou/20180728_220539.jpg'" alt="" />
+                    <a h:ref="'images/fssou/20180728_220539.jpg'" class="image filtered span-1-5" data-position="top">
+                        <img :src="'images/fssou/20180728_220539.jpg'" alt="" />
                     </a>
 
                 </div>
