@@ -1,0 +1,44 @@
+@import tailwind
+
+*
+    font-family: "Figtree", serif
+
+html,
+body
+    height: 100%
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+::-webkit-scrollbar,
+::-webkit-scrollbar:horizontal
+    display: none
+    display: none
+
+/* Estilize a barra de rolagem vertical */
+::-webkit-scrollbar
+    width: 4px /* Largura da barra de rolagem */
+    background-color: #f5f5f500 /* Cor de fundo da barra de rolagem */
+
+/* Estilize o polegar da barra de rolagem vertical */
+::-webkit-scrollbar-thumb
+    background-color: #88888888 /* Cor do polegar */
+    border-radius: 4px /* Raio de borda do polegar */
+
+/* Estilize a barra de rolagem horizontal (se necessário) */
+::-webkit-scrollbar:horizontal
+    height: 4px /* Altura da barra de rolagem horizontal */
+    background-color: #f5f5f500 /* Cor de fundo da barra de rolagem */
+
+/* Estilize o polegar da barra de rolagem horizontal (se necessário) */
+::-webkit-scrollbar-thumb:horizontal
+    background-color: #88888888 /* Cor do polegar horizontal */
+    border-radius: 4px /* Raio de borda do polegar horizontal */
+
+/* Adicione estilo de hover no polegar */
+::-webkit-scrollbar-thumb:hover
+    background-color: #555 /* Cor do polegar ao passar o mouse */
