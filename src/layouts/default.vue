@@ -16,7 +16,7 @@
             </div>
 
             <!-- Top level of page -->
-            <div class="fixed bottom-5 right-5 h-auto w-auto flex-none text-[24px] text-[#FACE4B] transition duration-300 hover:text-[#E0A800]">
+            <div v-if="false" class="fixed bottom-5 right-5 h-auto w-auto flex-none text-[24px] text-[#FACE4B] transition duration-300 hover:text-[#E0A800]">
                 <div
                     class="flex cursor-pointer rounded-full bg-[#2b2b2b] p-[12px] opacity-100 transition duration-300 hover:scale-110"
                 >

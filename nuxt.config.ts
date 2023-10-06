@@ -77,6 +77,9 @@ export default defineNuxtConfig({
                 },
             },
         },
+        modules: [
+            "@nuxt/devtools",
+        ],
     },
     modules: [
         "@nuxt/ui",
