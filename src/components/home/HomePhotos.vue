@@ -2,7 +2,7 @@
 </script>
 <template>
     <div>
-        <div class="flex h-full w-full flex-col flex-nowrap content-center gap-4 sm:flex-row">
+        <div class="flex h-full w-full flex-col flex-nowrap content-center gap-6 sm:flex-row">
             <div class="relative h-full w-full basis-1/4 overflow-hidden rounded-[20px]">
                 <div class="h-full w-full select-none transition-transform duration-[5000ms] ease-linear will-change-transform hover:scale-110">
                     <div class="h-full w-full brightness-50 transition duration-700 ease-in-out will-change-contents hover:brightness-100">

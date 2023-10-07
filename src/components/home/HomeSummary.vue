@@ -22,13 +22,13 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                 </div>
 
                 <div
-                    class="relative order-1 flex h-min w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-1 overflow-visible p-0 opacity-100"
+                    class="relative order-1 flex h-min w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-1 p-0 opacity-100"
                 >
                     <div
-                        class="relative flex h-min w-px flex-[1_0_0px] flex-row flex-nowrap content-center items-center justify-start gap-3 overflow-visible p-0 opacity-100"
+                        class="relative flex h-min w-px flex-[1_0_0px] flex-row flex-nowrap content-center items-center justify-start gap-3 p-0 opacity-100"
                     >
                         <div
-                            class="relative aspect-square h-[50px] w-[50px] flex-none overflow-visible rounded-full opacity-100"
+                            class="relative aspect-square h-[50px] w-[50px] flex-none rounded-full opacity-100"
                         >
                             <div
                                 class="rounded-inherit pointer-events-none absolute bottom-0 left-0 right-0 top-0 select-none"
@@ -45,10 +45,10 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                             </div>
                         </div>
                         <div
-                            class="relative flex h-min w-px flex-[1_0_0px] flex-col flex-nowrap content-start items-start justify-center gap-0 overflow-hidden p-0 opacity-100"
+                            class="relative flex h-min w-px flex-[1_0_0px] flex-col flex-nowrap content-start items-start justify-center gap-0 p-0 opacity-100"
                         >
                             <div
-                                class="word-break word-wrap-break relative flex h-auto w-full flex-none flex-shrink-0 transform-none flex-col justify-center overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
+                                class="word-break word-wrap-break relative flex h-auto w-full flex-none flex-shrink-0 transform-none flex-col justify-center whitespace-pre-wrap opacity-100 outline-none"
                             >
                                 <p
                                     class="whitespace-normal text-left text-base font-medium normal-case not-italic leading-6 tracking-normal text-white"
@@ -57,13 +57,13 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                                 </p>
                             </div>
                             <div
-                                class="relative flex h-6 w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-2.5 overflow-hidden p-0 opacity-100"
+                                class="relative flex h-6 w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-2.5 p-0 opacity-100"
                             >
                                 <div
-                                    class="relative aspect-square h-2 w-2 flex-none overflow-hidden rounded-full bg-[#34d399] opacity-100 will-change-transform"
+                                    class="relative aspect-square h-2 w-2 flex-none rounded-full bg-[#34d399] opacity-100 will-change-transform"
                                 />
                                 <div
-                                    class="word-break word-wrap-break relative flex h-auto w-px flex-[1_0_0px] flex-shrink-0 transform-none flex-col justify-end overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
+                                    class="word-break word-wrap-break relative flex h-auto w-px flex-[1_0_0px] flex-shrink-0 transform-none flex-col justify-end whitespace-pre-wrap opacity-100 outline-none"
                                 >
                                     <p
                                         class="whitespace-normal text-start text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
@@ -82,7 +82,7 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                     <p
                         class="m-0 whitespace-normal p-0 text-left font-medium normal-case not-italic text-white sm:text-3xl/[40px]"
                     >
-                        Atualmente Full Cycle Developer, com uma paixão ardente por implementar tecnologias e inovação para impactar e transformar vidas. Experiente no desenvolvimento de softwares.
+                        Atualmente Engenheiro de Software, com uma paixão ardente por implementar tecnologias e inovação para impactar e transformar vidas. Experiente no desenvolvimento de softwares.
                     </p>
                 </div>
 
