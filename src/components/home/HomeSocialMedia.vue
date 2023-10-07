@@ -53,7 +53,7 @@ const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
 <template>
     <div>
         <div
-            class="grid h-full grid-cols-2 grid-rows-5 gap-4"
+            class="grid h-full grid-cols-2 grid-rows-5 gap-6"
         >
             <!-- Twitter -->
             <div
