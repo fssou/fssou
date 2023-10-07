@@ -1,34 +1,6 @@
 <script lang="ts" setup>
 
-onMounted(() => {
-    const carousel = document.querySelector(".carousel",)
-    const inner = document.querySelector(".carousel-inner",)
-    const slides = document.querySelectorAll(".carousel-slide",)
 
-    let currentIndex = 0
-
-    function updateCarousel () {
-        const slideWidth = slides[0].offsetWidth
-        inner.style.transform = `translateX(-${currentIndex * slideWidth}px)`
-    }
-
-    function nextSlide () {
-        currentIndex = (currentIndex + 1) % slides.length
-        updateCarousel()
-    }
-
-    function prevSlide () {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length
-        updateCarousel()
-    }
-
-    // setInterval(nextSlide, 3000,) // Avança automaticamente a cada 3 segundos
-
-    // Você pode adicionar botões de próxima e anterior e vincular eventos de clique a eles
-    // Exemplo:
-    document.querySelector(".carousel-btn-forward",).addEventListener("click", nextSlide,)
-    document.querySelector(".carousel-btn-back",).addEventListener("click", prevSlide,)
-},)
 </script>
 
 <template>
