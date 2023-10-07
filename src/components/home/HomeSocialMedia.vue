@@ -211,7 +211,7 @@ const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
                         <p
                             class="whitespace-normal text-left text-base font-medium normal-case not-italic leading-5 tracking-normal text-white"
                         >
-                            @{{ linkedin.getHandle() }}}
+                            @{{ linkedin.getHandle() }}
                         </p>
                     </div>
                     <div
