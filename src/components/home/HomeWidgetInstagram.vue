@@ -1,5 +1,26 @@
 <script lang="ts" setup>
+
+const currentIndex: Ref<number> = ref(0,)
+
+const updateCarousel = () => {
+    const slideWidth = document.querySelectorAll(".carousel-slide",)[0].offsetWidth
+    document.querySelector(".carousel-inner",).style.transform = `translateX(-${currentIndex.value * slideWidth}px)`
+}
+
+const carouselSlideNext = () => {
+    const slides = document.querySelectorAll(".carousel-slide",)
+    currentIndex.value = (currentIndex.value + 1) % slides.length
+    updateCarousel()
+}
+
+const carouselSlidePrev = () => {
+    const slides = document.querySelectorAll(".carousel-slide",)
+    currentIndex.value = (currentIndex.value - 1 + slides.length) % slides.length
+    updateCarousel()
+}
+
 </script>
+
 <template>
     <div>
         <div
@@ -34,35 +55,10 @@
                             class="flex h-min min-w-min flex-none flex-nowrap content-end items-end justify-between gap-0 overflow-hidden p-0 align-bottom opacity-100"
                         >
                             <div
-                                class="word-break word-wrap-break relative flex hidden h-auto w-full flex-shrink transform-none flex-col justify-center overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
+                                class="relative flex h-[24px] w-full flex-none flex-shrink-0 transform-none flex-row justify-center gap-1 overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
                             >
-                                <p
-                                    class="whitespace-normal text-left text-base font-medium normal-case not-italic leading-6 tracking-normal text-white"
-                                >
-                                    Franclin Sousa
-                                </p>
-                            </div>
-                            <div
-                                class="relative flex hidden h-6 w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-2.5 overflow-hidden p-0 opacity-100"
-                            >
-                                <div
-                                    class="relative aspect-square h-2 w-2 flex-none overflow-hidden rounded-full bg-[#34d399] opacity-100 will-change-transform"
-                                />
-                                <div
-                                    class="word-break word-wrap-break relative flex h-auto w-px flex-[1_0_0px] flex-shrink-0 transform-none flex-col justify-end overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
-                                >
-                                    <p
-                                        class="whitespace-normal text-start text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
-                                    >
-                                        Software Engineer
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                class="relative flex h-auto w-full flex-none flex-shrink-0 transform-none flex-row justify-center gap-1 overflow-hidden whitespace-pre-wrap opacity-100 outline-none"
-                            >
-                                <span class="i-ic-round-arrow-back-ios carousel-btn-back" />
-                                <span class="i-ic-round-arrow-forward-ios carousel-btn-forward" />
+                                <span class="i-ic-round-arrow-back-ios carousel-btn-back h-full cursor-pointer" @click="carouselSlidePrev" />
+                                <span class="i-ic-round-arrow-forward-ios carousel-btn-forward h-full cursor-pointer" @click="carouselSlideNext" />
                             </div>
                         </div>
                     </div>
@@ -71,7 +67,7 @@
                 <div
                     class="carousel -z-10 order-2 flex w-full flex-[1_0_0px] transform-none select-none flex-col justify-start overflow-hidden opacity-100 outline-none"
                 >
-                    <div class="carousel-inner flex h-full w-fit transition duration-500 ease-out">
+                    <div class="carousel-inner flex h-full w-fit transition duration-500 ease-in-out">
                         <div class="h-full w-full flex-none">
                             <img src="~/assets/img/personal/IMG_000000000001.jpg" class="carousel-slide h-full w-full object-cover object-top" alt="">
                         </div>
