@@ -82,7 +82,7 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                     <p
                         class="m-0 whitespace-normal p-0 text-left font-medium normal-case not-italic text-white sm:text-3xl/[40px]"
                     >
-                        Atualmente Full Cycle Developer, com uma paixão ardente por implementar tecnologias e inovação para impactar e transformar vidas. Experiente no desenvolvimento de softwares.
+                        Atualmente Engenheiro de Software, com uma paixão ardente por implementar tecnologias e inovação para impactar e transformar vidas. Experiente no desenvolvimento de softwares.
                     </p>
                 </div>
 
