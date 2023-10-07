@@ -66,11 +66,11 @@
                         </span>
                     </div>
                     <button
-                        class="mt-4 w-full rounded-[12px] bg-[#27272a] px-3 py-2"
+                        class="mt-4 w-full rounded-[12px] bg-[#27272a] px-3 py-2 transition duration-1000 ease-in-out hover:bg-purple-700"
                         @click="navigateTo(`https://wa.me/5521982385776`, { external: true, open: { target: `_blank`, }, },)"
                     >
                         <p class="whitespace-normal font-medium text-white">
-                            Contato
+                            SIM
                         </p>
                     </button>
                 </div>
