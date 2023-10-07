@@ -1,9 +1,26 @@
+<script lang="ts" setup>
+const scroll = ref()
+const handlerWheelEvent = (e: any,) => {
+    scroll.value.scrollLeft += e.deltaY
+}
+
+onMounted(() => {
+    document.body.addEventListener("wheel", handlerWheelEvent, { passive: true, },)
+},)
+
+onBeforeUnmount(() => {
+    document.body.removeEventListener("wheel", handlerWheelEvent, { capture: true, },)
+},)
+
+</script>
+
 <template>
     <div id="layout-default" class="flex">
         <div id="wrapper" class="contents">
             <div
                 id="container-wrapper"
-                class="flex h-full sm:h-screen w-full flex-none items-center bg-[#0a0a0b]"
+                ref="scroll"
+                class="flex h-full w-full flex-none items-center overflow-auto bg-[#0a0a0a] sm:h-screen"
             >
                 <div
                     class="relative flex h-auto w-full flex-none flex-col flex-nowrap items-center sm:h-max sm:py-[48px]"
