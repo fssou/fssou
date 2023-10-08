@@ -6,6 +6,7 @@ import { getIconCollections, iconsPlugin, } from "@egoist/tailwindcss-icons"
 
 export default defineNuxtConfig({
     app: {
+        rootId: "app",
         head: {
             title: "Franclin Sousa",
             bodyAttrs: {
@@ -36,12 +37,6 @@ export default defineNuxtConfig({
                     as: "font",
                 },
             ],
-            noscript: [
-                {
-                    key: "noscrript-css",
-                    innerHTML: "<link rel='stylesheet' href='assets/css/noscript.css' />",
-                },
-            ],
             script: [
                 {
                     src: "https://www.googletagmanager.com/gtag/js?id=UA-113075411-1",
@@ -65,22 +60,6 @@ export default defineNuxtConfig({
         ui: {},
         theme: {},
     },
-    dev: process.env.NODE_ENV !== "production",
-    $development: {
-        devtools: {
-            enabled: true,
-        },
-        webpack: {
-            loaders: {
-                vue: {
-                    hotReload: true,
-                },
-            },
-        },
-        modules: [
-            "@nuxt/devtools",
-        ],
-    },
     modules: [
         "@nuxt/ui",
         "@nuxt/image",
@@ -97,11 +76,9 @@ export default defineNuxtConfig({
                 iconsPlugin({
                     collections: getIconCollections([
                         "mdi",
-                        "uil",
                         "ic",
                         "ph",
                         "devicon",
-                        "devicon-plain",
                         "tabler",
                         "skill-icons",
                     ],),
@@ -109,11 +86,31 @@ export default defineNuxtConfig({
             ],
         },
     },
+    dev: process.env.NODE_ENV !== "production",
+    $development: {
+        devtools: {
+            enabled: true,
+        },
+        webpack: {
+            loaders: {
+                vue: {
+                    hotReload: true,
+                },
+            },
+        },
+        modules: [
+            "@nuxt/devtools",
+        ],
+        app: {
+            head: {
+                title: "🚀 Dev | Franclin Sousa",
+            },
+        },
+    },
     devtools: {
-     timeline: {
-         enabled: true,
-     },
-
-     enabled: false,
+        enabled: false,
+        timeline: {
+            enabled: true,
+        },
     },
 },)

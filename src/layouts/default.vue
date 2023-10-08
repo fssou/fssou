@@ -1,35 +1,22 @@
 <script lang="ts" setup>
-const scroll = ref()
-const handlerWheelEvent = (e: any,) => {
-    scroll.value.scrollLeft += e.deltaY
-}
+
+const { disabledEvent, enabledEvent, } = useMouse()
 
 onMounted(() => {
-    document.body.addEventListener("wheel", handlerWheelEvent, { passive: true, },)
+    enabledEvent()
 },)
 
 onBeforeUnmount(() => {
-    document.body.removeEventListener("wheel", handlerWheelEvent, { capture: true, },)
+    disabledEvent()
 },)
 
 </script>
 
 <template>
-    <div id="layout-default" class="flex">
-        <div id="wrapper" class="contents">
-            <div
-                id="container-wrapper"
-                ref="scroll"
-                class="flex h-full w-full flex-none items-center overflow-auto bg-[#0a0a0a] sm:h-screen"
-            >
-                <div
-                    class="relative flex h-auto w-full flex-none flex-col flex-nowrap items-center sm:h-max sm:py-[48px]"
-                >
-                    <!-- Tiles is content of pages separetes in blocks-->
-                    <div id="tiles-wrapper" class="w-full">
-                        <NuxtPage />
-                    </div>
-                </div>
+    <div id="layout-default" class="h-full w-fit">
+        <div id="wrapper" class="flex h-full w-full flex-none items-center justify-center self-center bg-[#0a0a0a] object-cover p-5">
+            <div id="tiles-wrapper" class="flex w-full flex-none flex-col flex-nowrap items-center sm:h-max sm:py-[48px]">
+                <NuxtPage />
             </div>
 
             <!-- Top level of page -->

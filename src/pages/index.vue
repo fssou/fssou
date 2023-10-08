@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 
-
 </script>
 
 <template>
     <div
-        class="app-main-tiles relative flex w-[100%] min-w-min flex-none flex-col content-start items-center justify-start gap-[8px] px-3 pb-2 pt-2 sm:h-[576px] sm:flex-row sm:flex-nowrap sm:gap-[32px] sm:px-28 sm:pt-0"
+        class="app-main-tiles relative flex w-[100%] flex-none flex-col content-start items-center justify-start gap-[24px] sm:h-[576px] sm:flex-row sm:flex-nowrap sm:gap-[32px] sm:px-28 sm:pt-0"
     >
         <!-- Summary -->
         <HomeSummary class="app-tile-summary h-[512px] w-[100%] flex-none sm:h-full sm:w-[512px]" />

@@ -19,7 +19,6 @@
                         <source src="~/assets/vid/VID_0000000001.mp4" type="video/mp4">
                     </video>
                 </div>
-
                 <div
                     class="relative order-1 flex h-min w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-1 overflow-visible p-0 opacity-100"
                 >
@@ -60,7 +59,7 @@
                                 <span
                                     class="whitespace-normal text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
                                 >
-                                    Estou aqui para ajudar!
+                                    Vem comigo!
                                 </span><br>
                             </span>
                         </span>
@@ -69,7 +68,7 @@
                         class="mt-4 w-full rounded-[12px] bg-[#27272a] px-3 py-2 transition duration-1000 ease-in-out hover:bg-purple-700"
                         @click="navigateTo(`https://wa.me/5521982385776`, { external: true, open: { target: `_blank`, }, },)"
                     >
-                        <p class="whitespace-normal font-medium text-white">
+                        <p class="whitespace-normal font-medium tracking-widest text-white">
                             SIM
                         </p>
                     </button>
