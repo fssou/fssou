@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { sha256, } from "js-sha256"
 
-const address: String = "f@francl.in"
+const address: string = "f@francl.in"
 
 const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address,).trim().toLowerCase(),)}?s=128`
 
@@ -18,7 +18,7 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                 <div
                     class="absolute bottom-[-71px] right-[-108px] order-[0] h-[350px] w-[350px] flex-none opacity-100"
                 >
-                    <Cobe />
+                    <CanvasCobe />
                 </div>
 
                 <div
@@ -59,9 +59,7 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                             <div
                                 class="relative flex h-6 w-full flex-none flex-row flex-nowrap content-center items-center justify-start gap-2.5 p-0 opacity-100"
                             >
-                                <div
-                                    class="relative aspect-square h-2 w-2 flex-none rounded-full bg-[#34d399] opacity-100 will-change-transform"
-                                />
+                                <div class="relative aspect-square h-2 w-2 flex-none animate-pulse rounded-full bg-[#34d399] opacity-100 will-change-transform" />
                                 <div
                                     class="word-break word-wrap-break relative flex h-auto w-px flex-[1_0_0px] flex-shrink-0 transform-none flex-col justify-end whitespace-pre-wrap opacity-100 outline-none"
                                 >
@@ -75,17 +73,15 @@ const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address
                         </div>
                     </div>
                 </div>
-
                 <div
                     class="word-wrap-break word-break relative order-3 flex h-[250px] w-full flex-[1_0_0px] transform-none flex-col justify-start overflow-hidden opacity-100 outline-none"
                 >
                     <p
                         class="m-0 whitespace-normal p-0 text-left font-medium normal-case not-italic text-white sm:text-3xl/[40px]"
                     >
-                        Atualmente Engenheiro de Software, com uma paixão ardente por implementar tecnologias e inovação para impactar e transformar vidas. Experiente no desenvolvimento de softwares.
+                        Apaixonado por tecnologia e inovação. Minha jornada profissional é impulsionada pela busca incessante por projetos que utilizem a tecnologia como meio para impactar e transformar vidas.
                     </p>
                 </div>
-
                 <div
                     class="relative order-4 flex h-min w-max flex-none flex-col flex-nowrap content-start items-start justify-start gap-0 overflow-hidden p-0 opacity-100"
                 >

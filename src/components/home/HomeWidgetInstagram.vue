@@ -4,7 +4,7 @@ const currentIndex: Ref<number> = ref(0,)
 
 const updateCarousel = () => {
     const slideWidth = document.querySelectorAll(".carousel-slide",)[0].offsetWidth
-    document.querySelector(".carousel-inner",).style.transform = `translateX(-${currentIndex.value * slideWidth}px)`
+    document.querySelector(".carousel-wrapper",).style.transform = `translateX(-${currentIndex.value * slideWidth}px)`
 }
 
 const carouselSlideNext = () => {
@@ -67,7 +67,7 @@ const carouselSlidePrev = () => {
                 <div
                     class="carousel -z-10 order-2 flex w-full flex-[1_0_0px] transform-none select-none flex-col justify-start overflow-hidden opacity-100 outline-none"
                 >
-                    <div class="carousel-inner flex h-full w-fit transition duration-500 ease-in-out">
+                    <div class="carousel-wrapper flex h-full w-fit transition duration-500 ease-in-out">
                         <div class="h-full w-full flex-none">
                             <img src="~/assets/img/personal/IMG_000000000001.jpg" class="carousel-slide h-full w-full object-cover object-top" alt="">
                         </div>
