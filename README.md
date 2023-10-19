@@ -1,25 +1,5 @@
-<style>
-    .big-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        overflow: hidden;
-        z-index: -1;
-        filter: brightness(0.15);
-    }
-    .big-background img {
-        object-position: top;
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-    }
-</style>
-
-<div class="big-background">
-    <img src="src/assets/img/misc/finalspace/wp6522083-netflix-final-space-wallpapers.png"/>
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; overflow: hidden; z-index: -1; filter: brightness(0.15);">
+    <img style="object-position: top; object-fit: cover; height: 100%; width: 100%;" src="src/assets/img/misc/finalspace/wp6522083-netflix-final-space-wallpapers.png"/>
 </div>
 
 <div style="display: flex; flex-direction: column; width: 100%;">
