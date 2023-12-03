@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Build and deploy Nuxt.js on Firebase Hosting
+name: Build and Deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -33,7 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: prod
-      url: ${{ steps.deployment.outputs.details_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -72,10 +71,9 @@ jobs:
         env:
           NODE_ENV: production
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        id: deployment
+      - uses: google-github-actions/auth@v2
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
-          channelId: live
-          projectId: francl-in
+          service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
+          workload_identity_provider: ${{ secrets.FIREBASE_WORKLOAD_IDENTITY_PROVIDER_FRANCL_IN }}
+      - id: deployment
+        run: npx firebase-tools@latest deploy
