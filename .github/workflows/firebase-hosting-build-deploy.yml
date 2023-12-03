@@ -77,8 +77,5 @@ jobs:
           service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
           workload_identity_provider: ${{ secrets.FIREBASE_WORKLOAD_IDENTITY_PROVIDER_FRANCL_IN }}
           id_token_include_email: true
-      - run: |
-          gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
-          ACCESS_TOKEN=$(gcloud auth print-access-token)
       - id: deployment
-        run: npx firebase-tools@latest deploy --token="$ACCESS_TOKEN"
+        run: npx firebase-tools@latest deploy
