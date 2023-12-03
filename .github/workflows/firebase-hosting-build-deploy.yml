@@ -28,9 +28,12 @@ env:
   build-output-dir: .output
 
 jobs:
-  build:
-    name: Build
+  build-deploy:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: prod
+      url: ${{ steps.deployment.outputs.details_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -69,27 +72,6 @@ jobs:
         env:
           NODE_ENV: production
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.artifact-name }}
-          path: |
-            !${{ env.build-output-dir }}/**/node_modules
-            ${{ env.build-output-dir }}
-            firebase.json
-            .firebaserc
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy
-    needs: build
-    environment:
-      name: prod
-      url: ${{ steps.deployment.outputs.details_url }}
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: ${{ env.artifact-name }}
-          path: ${{ env.build-output-dir }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         id: deployment
         with:
