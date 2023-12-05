@@ -82,6 +82,9 @@ export default defineNuxtConfig({
                 memory: "256MiB",
                 concurrency: 1000,
                 ingressSettings: "ALLOW_ALL",
+                cors: [
+                    "fssou-vrcgjxnlia-uc.a.run.app",
+                ],
             },
         },
     },
