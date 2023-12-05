@@ -78,10 +78,10 @@ export default defineNuxtConfig({
             gen: 2,
             httpsOptions: {
                 region: "us-central1",
-                maxInstances: 1,
-                memory: "128MiB",
+                maxInstances: 2,
+                memory: "256MiB",
                 concurrency: 1000,
-                ingressSettings: "ALLOW_INTERNAL_ONLY",
+                ingressSettings: "ALLOW_ALL",
             },
         },
     },
