@@ -45,15 +45,6 @@ jobs:
         with:
           node-version: 18
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .output
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles(env.build-output-dir) }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
       - name: Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build the application
@@ -66,7 +57,5 @@ jobs:
           service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
           workload_identity_provider: ${{ secrets.FIREBASE_WORKLOAD_IDENTITY_PROVIDER_FRANCL_IN }}
           id_token_include_email: true
-      - run: |
-          gcloud config set account ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
       - id: deployment
         run: npx firebase-tools@latest deploy
