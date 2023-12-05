@@ -1,32 +1,21 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Build and Deploy
-
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths-ignore:
       - "*.md"
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-    
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+  workflow_dispatch: null
 permissions:
   contents: read
   pages: write
   id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "fssou"
+  group: fssou
   cancel-in-progress: false
-
 env:
   artifact-name: fssou
   build-output-dir: .output
-
 jobs:
   build-deploy:
     name: Build and deploy
@@ -77,5 +66,7 @@ jobs:
           service_account: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
           workload_identity_provider: ${{ secrets.FIREBASE_WORKLOAD_IDENTITY_PROVIDER_FRANCL_IN }}
           id_token_include_email: true
+      - run: |
+          gcloud config set account ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRANCL_IN }}
       - id: deployment
         run: npx firebase-tools@latest deploy
