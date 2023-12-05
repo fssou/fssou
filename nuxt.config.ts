@@ -79,6 +79,8 @@ export default defineNuxtConfig({
             httpsOptions: {
                 region: "us-central1",
                 maxInstances: 1,
+                memory: "128MiB",
+                concurrency: 1,
             },
         },
     },
