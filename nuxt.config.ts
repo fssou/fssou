@@ -80,7 +80,8 @@ export default defineNuxtConfig({
                 region: "us-central1",
                 maxInstances: 1,
                 memory: "128MiB",
-                concurrency: 1,
+                concurrency: 1000,
+                ingressSettings: "ALLOW_INTERNAL_ONLY",
             },
         },
     },
@@ -104,6 +105,9 @@ export default defineNuxtConfig({
     $development: {
         devtools: {
             enabled: true,
+            timeline: {
+                enabled: true,
+            },
         },
         webpack: {
             loaders: {
@@ -123,8 +127,5 @@ export default defineNuxtConfig({
     },
     devtools: {
         enabled: false,
-        timeline: {
-            enabled: true,
-        },
     },
 },)
