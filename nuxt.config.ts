@@ -63,7 +63,6 @@ export default defineNuxtConfig({
     modules: [
         "@nuxt/ui",
         "@nuxt/image",
-        "@nuxt/content",
         "@nuxtjs/tailwindcss",
         // "@unocss/nuxt",
         "@pinia/nuxt",
@@ -87,6 +86,9 @@ export default defineNuxtConfig({
         },
     },
     dev: process.env.NODE_ENV !== "production",
+    devtools: {
+        enabled: false,
+    },
     $development: {
         devtools: {
             enabled: true,
@@ -109,8 +111,5 @@ export default defineNuxtConfig({
                 title: "🚀 Dev | Franclin Sousa",
             },
         },
-    },
-    devtools: {
-        enabled: false,
     },
 },)
