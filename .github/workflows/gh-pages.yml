@@ -60,15 +60,6 @@ jobs:
         with:
           generator_config_file: nuxt.config.ts
           static_site_generator: nuxt
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .output
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles(env.build-output-dir) }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
       - name: Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build the application
