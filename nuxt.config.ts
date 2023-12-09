@@ -69,25 +69,7 @@ export default defineNuxtConfig({
         "@pinia/nuxt",
     ],
     srcDir: "src",
-    ssr: true,
-    nitro: {
-        preset: "firebase",
-        firebase: {
-            serverFunctionName: "fssou",
-            nodeVersion: "18",
-            gen: 2,
-            httpsOptions: {
-                region: "us-central1",
-                maxInstances: 2,
-                memory: "256MiB",
-                concurrency: 1000,
-                ingressSettings: "ALLOW_ALL",
-                cors: [
-                    "fssou-vrcgjxnlia-uc.a.run.app",
-                ],
-            },
-        },
-    },
+    ssr: false,
     tailwindcss: {
         config: {
             plugins: [
