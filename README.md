@@ -1,4 +1,4 @@
-<img align="left" height="230px" style="margin: 25px;border-radius: 100%; box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.5);" src="src/assets/img/personal/ia/IMG_0203.JPG" alt="Foto perfil gerada por IA" />
+<img align="left" height="230px" style="margin: 25px;border-radius: 100%; box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.5);" src="assets/img/personal/ia/IMG_0203.JPG" alt="Foto perfil gerada por IA" />
 
 # Olá Universo! 👋
 
