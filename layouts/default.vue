@@ -7,13 +7,11 @@ const onClickColorChange = () => {
 </script>
 
 <template>
-    <div id="layout-default" class="flex h-full w-full items-center justify-center sm:h-full sm:w-auto">
-        <div id="wrapper" class="flex h-full w-full items-center justify-center p-5 sm:w-auto">
-            <div id="tiles-wrapper" class="flex w-full items-center sm:h-full sm:w-auto">
-                <NuxtPage />
-            </div>
+    <div class="container">
+        <div class="wrapper">
+            <NuxtPage />
         </div>
-        <div class="container-color-mode">
+        <div class="color-mode-container">
             <div
                 class="color-mode"
                 @click="onClickColorChange"
@@ -26,11 +24,23 @@ const onClickColorChange = () => {
 </template>
 
 <style lang="sass" scoped>
-.container-color-mode
+.container
+    @apply flex items-center justify-start
+    @apply h-full w-full
+    @apply sm:h-full sm:w-auto
+
+.wrapper
+    @apply flex items-center justify-center
+    @apply w-full h-full
+    @apply sm:w-auto sm:h-full
+    @apply sm:m-[unset] m-5
+
+.color-mode-container
     @apply fixed
     @apply flex justify-center items-center
     @apply w-screen h-auto
-    @apply sm:top-5 sm:left-0 sm:bottom-[unset] bottom-0
+    @apply sm:mt-[10vh] mt-[unset]
+    @apply sm:top-0 sm:left-0 sm:bottom-[unset] bottom-0
 
 .color-mode
     @apply cursor-pointer
@@ -41,6 +51,6 @@ const onClickColorChange = () => {
     @apply sm:p-[12px] pt-3 pb-6 px-3
     @apply text-[24px] text-primary-800
     @apply transition duration-300 hover:text-primary-600 hover:scale-110
-    div
+    i
         @apply shadow-sm
 </style>

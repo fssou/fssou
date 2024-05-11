@@ -7,7 +7,6 @@ export default defineNuxtConfig({
         "@nuxt/ui",
         "@nuxt/image",
         "@nuxt/eslint",
-        // "@unocss/nuxt",
         "@pinia/nuxt",
     ],
     app: {
@@ -40,10 +39,13 @@ export default defineNuxtConfig({
     },
     tailwindcss: {
         editorSupport: true,
+        cssPath: [
+            "~/assets/sass/main.sass",
+            {
+                injectPosition: "first",
+            },
+        ],
     },
-    css: [
-        "~/assets/sass/main.sass",
-    ],
     devtools: {
         enabled: false,
     },

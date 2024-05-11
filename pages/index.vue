@@ -12,42 +12,25 @@
 
 <style lang="sass" scoped>
 .app-tile-container
-    @apply flex
-    @apply h-fit
-    @apply w-full
-    @apply flex-none
-    @apply flex-col
-    @apply items-center
-    @apply justify-start
+    @apply flex flex-none flex-col
+    @apply justify-start items-center
+    @apply w-full h-fit
+    @apply sm:w-auto sm:h-[60%]
     @apply gap-[24px]
-    @apply sm:h-[85%]
-    @apply sm:w-auto
-    @apply sm:flex-row
-    @apply sm:flex-nowrap
-    @apply sm:gap-[32px]
-    @apply sm:px-28
-    @apply sm:pt-0
+    @apply sm:flex-row sm:flex-nowrap sm:gap-[32px]
+    @apply sm:px-[20vw] sm:pt-0
     @apply sm:mb-[unset] mb-16
 
 .app-tile-summary
-    @apply h-[512px]
-    @apply w-[100%]
-    @apply flex-none
-    @apply sm:h-full
-    @apply sm:w-[80vw]
+    @apply w-[100%] h-[512px]
+    @apply sm:w-[60vw] sm:h-full
 
 .app-tile-social-media
-    @apply h-[512px]
-    @apply w-[100%]
-    @apply flex-none
-    @apply sm:h-full
-    @apply sm:w-[70vw]
+    @apply w-[100%] h-[512px]
+    @apply sm:w-[60vw] sm:h-full
 
 .app-tile-end
-    @apply h-[512px]
-    @apply w-[100%]
-    @apply flex-none
-    @apply sm:h-full
-    @apply sm:w-[70vw]
+    @apply w-[100%] h-[512px]
+    @apply sm:w-[60vw] sm:h-full
 
 </style>

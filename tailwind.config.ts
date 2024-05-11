@@ -21,6 +21,7 @@ export default <Partial<Config>>{
                 "devicon",
                 "tabler",
                 "skill-icons",
+                "line-md",
             ],),
         },),
     ],

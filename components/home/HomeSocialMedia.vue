@@ -4,7 +4,6 @@ class SocialMedia {
     private name: string
     private site: string
     private handle: string
-    private prefix: string
     constructor (name: string, site: string, handle: string,) {
         this.name = name
         this.site = site
@@ -55,9 +54,8 @@ const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
                 <div
                     class="relative order-1 flex h-[24px] w-[24px] flex-none flex-row flex-nowrap content-center items-center justify-start gap-1 overflow-visible p-0 opacity-100"
                 >
-                    <span
-                        class="rendering-auto i-devicon-twitter pointer-events-none h-full w-full select-none object-contain object-center"
-                        alt=""
+                    <i
+                        class="rendering-auto i-line-md-twitter-x pointer-events-none h-full w-full select-none object-contain object-center dark:text-white"
                     />
                 </div>
 
@@ -284,14 +282,16 @@ const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
 </template>
 
 <style lang="sass" scoped>
+
 .base
     @apply relative p-4 w-full
     @apply flex flex-col flex-nowrap content-start items-start justify-between
-    @apply rounded-[20px] shadow-thin
+    @apply rounded-[20px]
     @apply cursor-pointer select-none overflow-hidden
     @apply transition duration-500 ease-in-out will-change-transform
     @apply dark:hover:brightness-150 dark:bg-gray-950
     @apply hover:bg-primary-700 hover:text-white
+    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
 
 .twitter
     @apply base

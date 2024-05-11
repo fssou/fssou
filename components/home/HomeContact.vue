@@ -13,7 +13,7 @@ const onClickYes = () => {
             class="contents"
         >
             <div
-                class="relative flex h-full w-full flex-col flex-nowrap content-start items-start justify-between gap-[24px] overflow-hidden rounded-[20px] bg-[#121212] p-[16px] shadow-thin will-change-transform"
+                class="relative flex h-full w-full flex-col flex-nowrap content-start items-start justify-between gap-[24px] overflow-hidden rounded-[20px] dark:bg-[#121212] p-[16px] shadow-thin will-change-transform"
             >
                 <div class="absolute right-0 top-0 h-full w-full">
                     <video

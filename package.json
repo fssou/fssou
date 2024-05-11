@@ -31,7 +31,6 @@
         "@nuxt/image": "^1.6.0",
         "@pinia/nuxt": "^0.5.1",
         "@types/node": "^20.12.7",
-        "@unocss/nuxt": "^0.59.4",
         "@vue/runtime-dom": "latest",
         "@vueuse/core": "^10.9.0",
         "cobe": "^0.6.3",
