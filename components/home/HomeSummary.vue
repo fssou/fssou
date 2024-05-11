@@ -18,7 +18,7 @@ const size: number = window.innerWidth / 1.1
                     :class="`h-[${size}px] w-[${size}px]`"
                     class="cobe absolute bottom-0 right-0 order-[0] flex  translate-x-1/4 translate-y-1/4 opacity-100"
                 >
-                    <CanvasCobeGlobe
+                    <CobeGlobe
                         class="dark:brightness-50"
                         :size="size"
                     />
