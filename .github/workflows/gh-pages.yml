@@ -44,7 +44,9 @@ jobs:
           run-id: 9815899663
       - name: Set Lambda Function URL
         id: lambda-function-url
-        run: echo "lambda_function_url=$(cat lambda-function-url.txt)" >> $GITHUB_OUTPUT
+        run: |
+          echo "lambda_function_url=$(cat lambda-function-url.txt)" >> $GITHUB_OUTPUT
+          cat lambda-function-url.txt
       - name: Detect package manager
         id: detect-package-manager
         run: |
