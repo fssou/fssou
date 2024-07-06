@@ -41,7 +41,7 @@ jobs:
           name: lambda-function-url
           repository: fssou/fssou-api
           github-token: ${{ github.token }}
-          run-id: -1
+          run-id: 9815899663
       - name: Set Lambda Function URL
         id: lambda-function-url
         run: echo "lambda_function_url=$(cat lambda-function-url.txt)" >> $GITHUB_OUTPUT
