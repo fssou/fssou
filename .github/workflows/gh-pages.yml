@@ -33,7 +33,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Set Lambda Function URL
+        id: lambda-function-url
+        uses: actions/download-artifact@v4
+        with:
+          name: lambda-function-url
+          repository: fssou/fssou-api
+        run: echo "lambda_function_url=$(cat lambda-function-url.txt)" >> $GITHUB_OUTPUT
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -66,6 +73,7 @@ jobs:
         env:
           BASE_PATH: ${{ steps.setup-pages.outputs.base_path }}
           NODE_ENV: production
+          LAMBDA_FUNCTION_URL: ${{ steps.lambda-function-url.outputs.lambda_function_url }}
         run: ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2

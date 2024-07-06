@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 
+
 class SocialMedia {
     private name: string
     private site: string
@@ -39,6 +40,12 @@ const linkedin = new SocialMedia("Linkedin", "https://linkedin.com/in/", "fssou"
 const codepen = new SocialMedia("Codepen", "https://codepen.io/", "fssou",)
 const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
 
+defineProps({
+    twitterData: {
+        type: Object,
+        required: true,
+    },
+},)
 </script>
 
 <template>
@@ -80,7 +87,7 @@ const medium = new SocialMedia("Medium", "https://medium.com/@", "fssou",)
                             <span
                                 class="block whitespace-normal text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
                             >
-                                10 seguidores
+                                {{ twitterData.data?.public_metrics?.followers_count }} seguidores
                             </span><br>
                         </span>
                     </div>

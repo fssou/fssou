@@ -50,6 +50,11 @@ export default defineNuxtConfig({
         enabled: false,
     },
     ssr: false,
+    runtimeConfig: {
+        public: {
+            lambdaFunctionUrl: process.env.LAMBDA_FUNCTION_URL || "",
+        },
+    },
     dev: process.env.NODE_ENV !== "production",
     $development: {
         devtools: {

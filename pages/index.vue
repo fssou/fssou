@@ -1,11 +1,26 @@
 <script lang="ts" setup>
+import {ref, onMounted, type Ref,} from "vue"
+import XService from "~/services/x"
+import type {UserData,} from "~/services/types";
 
+const twitter: Ref<UserData> = ref({} as UserData,)
+
+const config = useRuntimeConfig()
+
+const xService = new XService(config.public.lambdaFunctionUrl,)
+
+onMounted(() => {
+    xService.getUsersMe()
+        .then((response,) => {
+            twitter.value = response
+        },)
+},)
 </script>
 
 <template>
     <div class="app-tile-container">
         <HomeSummary class="app-tile-summary" />
-        <HomeSocialMedia class="app-tile-social-media" />
+        <HomeSocialMedia class="app-tile-social-media" :twitter-data="twitter" />
         <HomeContact class="app-tile-end" />
     </div>
 </template>

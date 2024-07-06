@@ -19,7 +19,8 @@
         "vue": "latest"
     },
     "dependencies": {
-        "nuxt": "^3.11.2"
+        "nuxt": "^3.11.2",
+        "axios": "^1.7.2"
     },
     "devDependencies": {
         "@egoist/tailwindcss-icons": "^1.7.4",
@@ -37,7 +38,6 @@
         "eslint-plugin-tailwindcss": "^3.15.1",
         "js-sha256": "^0.11.0",
         "pinia": "^2.1.7",
-        "tailwindcss": "^3.4.3",
         "typescript": "^5.4.5"
     }
 }
