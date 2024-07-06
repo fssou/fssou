@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set Lambda Function URL
+      - name: Artifact Lambda Function URL
         id: artifact-lambda-function-url
         uses: actions/download-artifact@v4
         with:
@@ -47,6 +47,7 @@ jobs:
         run: |
           echo "lambda_function_url=$(cat lambda-function-url.txt)" >> $GITHUB_OUTPUT
           cat lambda-function-url.txt
+          ls -lha
       - name: Detect package manager
         id: detect-package-manager
         run: |
