@@ -19,7 +19,7 @@
         "vue": "latest"
     },
     "dependencies": {
-        "nuxt": "^3.11.2",
+        "nuxt": "^3.12.4",
         "axios": "^1.7.2"
     },
     "devDependencies": {
