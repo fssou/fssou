@@ -19,10 +19,10 @@
         "vue": "latest"
     },
     "dependencies": {
+        "nuxt": "^3.14.1592",
+        "axios": "^1.7.7"
     },
     "devDependencies": {
-        "nuxt": "^3.14.1592",
-        "axios": "^1.7.7",
         "@egoist/tailwindcss-icons": "^1.8.1",
         "@iconify/json": "^2.2.274",
         "@nuxt/devtools": "latest",
@@ -38,6 +38,7 @@
         "eslint-plugin-tailwindcss": "^3.17.5",
         "js-sha256": "^0.11.0",
         "pinia": "^2.2.6",
-        "typescript": "^5.7.2"
+        "typescript": "^5.7.2",
+        "sass-embedded": "^1.81.0"
     }
 }
