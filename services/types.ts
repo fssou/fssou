@@ -32,7 +32,7 @@ interface PublicMetrics {
     like_count: number;
 }
 
-export interface UserData {
+export interface TwitterUserData {
     data: {
         entities: Entities;
         id: string;
@@ -49,4 +49,11 @@ export interface UserData {
         profile_image_url: string;
         protected: boolean;
     };
+}
+
+export class TwitterUser implements TwitterUserData {
+    public data: TwitterUserData["data"];
+    constructor (data: TwitterUserData["data"],) {
+        this.data = data;
+    }
 }

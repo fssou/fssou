@@ -6,7 +6,7 @@ import tailwindcss from "eslint-plugin-tailwindcss"
 
 export default withNuxt({
     plugins: {
-        tailwindcss
+        tailwindcss,
     },
     rules: {
         "no-tabs": [
@@ -16,7 +16,7 @@ export default withNuxt({
             },
         ],
         "comma-dangle": [
-            "error",
+            "off",
             "always",
         ],
         "array-bracket-newline": [
@@ -46,4 +46,4 @@ export default withNuxt({
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn",
     },
-})
+},)

@@ -1,5 +1,5 @@
 
-export function useMouse () {
+export function useMouse() {
     const x = ref(0,)
     const y = ref(0,)
 

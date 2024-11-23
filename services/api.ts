@@ -6,7 +6,9 @@ import {Axios,} from "axios";
 export default class ApiService {
     private baseURL: string;
 
-    constructor(baseURL: string,) {
+    constructor(
+        baseURL: string,
+    ) {
         this.baseURL = baseURL;
     }
 

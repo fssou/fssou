@@ -1,8 +1,14 @@
 <script lang="ts" setup>
 import { sha256, } from "js-sha256"
 
+const name: string = "Franclin"
+const jobTitle: string = "Engenheiro de Software"
 const address: string = "f@francl.in"
 const gravatarURL: string = `https://gravatar.com/avatar/${sha256(String(address,).trim().toLowerCase(),)}?s=128`
+const summary: string = "Movido por uma paixão inabalável por tecnologia e inovação, minha jornada profissional é guiada pelo desejo profundo de usar a tecnologia como uma força transformadora, capaz de tocar vidas e deixar um impacto duradouro no mundo."
+const location: string = "Baseado em Rio de Janeiro, BRA 🇧🇷"
+const utc: string = "UTC/GMT-3"
+
 const size: number = window.innerWidth / 1.1
 </script>
 
@@ -55,7 +61,7 @@ const size: number = window.innerWidth / 1.1
                                 <p
                                     class="whitespace-normal text-left text-base font-medium normal-case not-italic leading-6 tracking-normal dark:text-white"
                                 >
-                                    Franclin Sousa
+                                    {{ name }}
                                 </p>
                             </div>
                             <div
@@ -68,7 +74,7 @@ const size: number = window.innerWidth / 1.1
                                     <p
                                         class="whitespace-normal text-start text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
                                     >
-                                        Engenheiro de Software
+                                        {{ jobTitle }}
                                     </p>
                                 </div>
                             </div>
@@ -81,7 +87,7 @@ const size: number = window.innerWidth / 1.1
                     <h1
                         class="m-0 whitespace-normal p-0 text-left text-2xl font-medium normal-case not-italic dark:text-white"
                     >
-                        Apaixonado por tecnologia e inovação. Minha jornada profissional é impulsionada pela busca incessante por projetos que utilizem a tecnologia como meio para impactar e transformar vidas.
+                        {{ summary }}
                     </h1>
                 </div>
                 <div
@@ -93,7 +99,7 @@ const size: number = window.innerWidth / 1.1
                         <p
                             class="whitespace-normal text-left text-base font-medium normal-case not-italic leading-5 tracking-normal dark:text-white"
                         >
-                            Baseado em Rio de Janeiro, BRA 🇧🇷
+                            {{ location }}
                         </p>
                     </div>
                     <div
@@ -108,7 +114,7 @@ const size: number = window.innerWidth / 1.1
                                 <span
                                     class="whitespace-normal text-sm font-medium normal-case not-italic leading-6 tracking-normal text-[#a1a1aa]"
                                 >
-                                    UTC/GMT-3 horas
+                                    {{ utc }}
                                 </span><br>
                             </span>
                         </span>
