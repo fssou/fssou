@@ -5,9 +5,8 @@ body
   margin: 0
   padding: 0
   box-sizing: border-box
-  overflow: auto
   min-height: 100%
   height: fit-content
+  @apply overflow-hidden
   @apply flex
-  @media (min-width: 640px)
-    height: 100%
+  @apply sm:h-full

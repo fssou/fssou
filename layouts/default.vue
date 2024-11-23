@@ -4,10 +4,14 @@ const isDark = computed(() => colorMode.value === "dark",)
 const onClickColorChange = () => {
     colorMode.value = colorMode.value === "dark" ? "light" : "dark"
 }
+const {onWheel,} = useMouse()
 </script>
 
 <template>
-    <div class="container">
+    <div
+        class="lyt-default"
+        @wheel="onWheel"
+    >
         <div class="wrapper">
             <NuxtPage />
         </div>
@@ -24,16 +28,19 @@ const onClickColorChange = () => {
 </template>
 
 <style lang="sass" scoped>
-.container
-    @apply flex items-center justify-start
-    @apply h-full w-full
-    @apply sm:h-full sm:w-auto
+.lyt-default
+    @apply flex flex-col items-center justify-start
+    @apply h-screen w-screen
+    @apply overflow-auto
+    @apply sm:flex-row
 
 .wrapper
-    @apply flex items-center justify-center
-    @apply w-full h-full
+    @apply flex
+    @apply w-full h-auto
+    @apply p-5
+    @apply sm:items-center sm:justify-start
     @apply sm:w-auto sm:h-full
-    @apply sm:m-[unset] m-5
+    @apply sm:p-[unset]
 
 .color-mode-container
     @apply fixed

@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import { ref, onMounted, } from "vue"
-import { theme, } from "#tailwind-config"
-import defaultTheme from "tailwindcss/defaultTheme"
 import createGlobe, { type Marker, } from "cobe"
 
 const props = defineProps({
@@ -12,7 +10,7 @@ const props = defineProps({
 },)
 
 const cobe = ref()
-const phi = ref(0,)
+const phi = ref(4,)
 const marker = ref<Marker>({
     location: [
         0,
@@ -32,7 +30,7 @@ if(navigator.geolocation) {
                 latitude,
                 longitude,
             ],
-            size: 0.03,
+            size: 0.01,
         }
     },)
 }
@@ -48,7 +46,7 @@ onMounted(() => {
         theta: 0,
         dark: 1,
         diffuse: 1.2,
-        mapSamples: 24000,
+        mapSamples: 64000,
         mapBrightness: 6,
         opacity: 0.9,
         baseColor: [
@@ -90,7 +88,7 @@ onMounted(() => {
                         -22.9484719,
                         -43.2160722,
                     ],
-                    size: 0.03,
+                    size: 0.02,
                 },
                 marker.value,
             ]

@@ -19,25 +19,25 @@
         "vue": "latest"
     },
     "dependencies": {
-        "nuxt": "^3.11.2",
-        "axios": "^1.7.2"
     },
     "devDependencies": {
-        "@egoist/tailwindcss-icons": "^1.7.4",
-        "@iconify/json": "^2.2.204",
+        "nuxt": "^3.14.1592",
+        "axios": "^1.7.7",
+        "@egoist/tailwindcss-icons": "^1.8.1",
+        "@iconify/json": "^2.2.274",
         "@nuxt/devtools": "latest",
-        "@nuxt/eslint": "^0.3.10",
-        "@nuxt/ui": "^2.15.2",
-        "@nuxt/eslint-config": "^0.3.10",
-        "@nuxt/image": "^1.6.0",
-        "@pinia/nuxt": "^0.5.1",
-        "@types/node": "^20.12.7",
-        "@vue/runtime-dom": "latest",
-        "@vueuse/core": "^10.9.0",
+        "@nuxt/eslint": "^0.7.1",
+        "@nuxt/ui": "^2.19.2",
+        "@nuxt/eslint-config": "^0.7.1",
+        "@nuxt/image": "^1.8.1",
+        "@pinia/nuxt": "^0.7.0",
+        "@types/node": "^22.9.3",
+        "@vue/runtime-dom": "^3.5.13",
+        "@vueuse/core": "^11.3.0",
         "cobe": "^0.6.3",
-        "eslint-plugin-tailwindcss": "^3.15.1",
+        "eslint-plugin-tailwindcss": "^3.17.5",
         "js-sha256": "^0.11.0",
-        "pinia": "^2.1.7",
-        "typescript": "^5.4.5"
+        "pinia": "^2.2.6",
+        "typescript": "^5.7.2"
     }
 }
