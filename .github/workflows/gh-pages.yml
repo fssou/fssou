@@ -53,13 +53,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-#          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         id: setup-pages
         uses: actions/configure-pages@v3
         with:
           generator_config_file: nuxt.config.ts
           static_site_generator: nuxt
+      - run: rm -rf *lock.json
       - name: Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build the application
