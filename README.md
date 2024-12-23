@@ -1,11 +1,3 @@
-
-https://iam.francl.in/realms/fssou/broker/github/login?client_id=francl-in&response_type=code&redirect_uri=https%3A%2F%2Ffrancl.in
-
-https://iam.francl.in/realms/fssou/protocol/openid-connect/auth?client_id=francl-in&redirect_uri=https%3A%2F%2Ffrancl.in&response_type=code&scope=openid&nonce=fcc2de6a-0a48-409e-8b73-c53194f56936&kc_idp_hint=github
-
-
-<img align="left" height="230px" style="margin: 25px;border-radius: 100%; box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.5);" src="assets/img/personal/ia/IMG_0203.JPG" alt="Foto perfil gerada por IA" />
-
 # Olá Universo! 👋
 
 Saudações, meu nome é **Franclin**, mas você pode me chamar de **Frank**. Nos jogos, uso o apelido **Ragnar**, então também pode me chamar assim. Sou um brasileiro nascido em **1995** com uma grande paixão por linguagens de programação, astronomia, tecnologia, música e diversos outros tópicos. Minha jornada na programação teve início em **2012** com o _VBA_ e o _NI LabView_, e hoje sou um Engenheiro de Software.
