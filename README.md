@@ -1,3 +1,9 @@
+
+https://iam.francl.in/realms/fssou/broker/github/login?client_id=francl-in&response_type=code&redirect_uri=https%3A%2F%2Ffrancl.in
+
+https://iam.francl.in/realms/fssou/protocol/openid-connect/auth?client_id=francl-in&redirect_uri=https%3A%2F%2Ffrancl.in&response_type=code&scope=openid&nonce=fcc2de6a-0a48-409e-8b73-c53194f56936&kc_idp_hint=github
+
+
 <img align="left" height="230px" style="margin: 25px;border-radius: 100%; box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.5);" src="assets/img/personal/ia/IMG_0203.JPG" alt="Foto perfil gerada por IA" />
 
 # Olá Universo! 👋
@@ -83,8 +89,6 @@ Saudações, meu nome é **Franclin**, mas você pode me chamar de **Frank**. No
 <p>
     <a style="width: 40px; align-items: center; justify-content: center" href="https://linkedin.com/in/fssou" target="blank"><img align="center" src="https://api.iconify.design/skill-icons:linkedin.svg" alt="fssou" width="40" height="40"/></a>
     <a style="width: 40px; align-items: center; justify-content: center" href="https://twitter.com/fssouoficial" target="blank"><img align="center" src="https://api.iconify.design/skill-icons:twitter.svg" alt="fssouoficial" width="40" height="40"/></a>
-    <a style="width: 40px; align-items: center; justify-content: center" href="https://instagram.com/fssouoficial" target="blank"><img align="center" src="https://api.iconify.design/skill-icons:instagram.svg?color=%23888888" alt="fssouoficial" width="40" height="40"/></a>
-    <a style="width: 40px; align-items: center; justify-content: center" href="https://fb.com/fssouoficial" target="blank"><img align="center" src="https://api.iconify.design/brandico:facebook-rect.svg?color=%231877F2" alt="fssouoficial" width="40" height="40"/></a>
     <a style="width: 40px; align-items: center; justify-content: center" href="https://dev.to/fssou" target="blank"><img align="center" src="https://api.iconify.design/skill-icons:devto-dark.svg" alt="fssou" width="40" height="40"/></a>
     <a style="width: 40px; align-items: center; justify-content: center" href="https://medium.com/@fssou" target="blank"><img align="center" src="https://api.iconify.design/basil:medium-solid.svg?color=%23888888" alt="@fssou" width="40" height="40"/></a>
 </p>
