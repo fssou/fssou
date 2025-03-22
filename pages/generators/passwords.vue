@@ -3,130 +3,150 @@
         <h1 class="mb-6 text-3xl font-bold">Gerador de Senhas Fortes</h1>
 
         <div class="password-card">
-            <!-- Opções de configuração -->
-            <div class="mb-6 space-y-4">
-                <div>
-                    <label class="option-label">
-                        <input 
-                            v-model="options.useUppercase" 
-                            type="checkbox" 
-                            class="form-checkbox"
-                            id="uppercase"
-                            aria-label="Incluir letras maiúsculas"
-                        >
-                        <span>Incluir letras maiúsculas (A-Z)</span>
-                    </label>
-                </div>
-
-                <div>
-                    <label class="option-label">
-                        <input 
-                            v-model="options.useLowercase" 
-                            type="checkbox" 
-                            class="form-checkbox"
-                            id="lowercase"
-                            aria-label="Incluir letras minúsculas"
-                        >
-                        <span>Incluir letras minúsculas (a-z)</span>
-                    </label>
-                </div>
-
-                <div>
-                    <label class="option-label">
-                        <input 
-                            v-model="options.useNumbers" 
-                            type="checkbox" 
-                            class="form-checkbox"
-                            id="numbers"
-                            aria-label="Incluir números"
-                        >
-                        <span>Incluir números (0-9)</span>
-                    </label>
-                </div>
-
-                <div>
-                    <label class="option-label">
-                        <input 
-                            v-model="options.useSymbols" 
-                            type="checkbox" 
-                            class="form-checkbox"
-                            id="symbols"
-                            aria-label="Incluir símbolos"
-                        >
-                        <span>Incluir símbolos (!@#$%^&*)</span>
-                    </label>
-                </div>
-
-                <div>
-                    <label class="block">
-                        <span>Comprimento da senha:</span>
-                        <input
-                            v-model.number="options.passwordLength"
-                            type="number"
-                            min="8"
-                            max="64"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-800 dark:text-white dark:border-gray-700"
-                            aria-label="Comprimento da senha"
-                        >
-                    </label>
-                </div>
-            </div>
-
-            <!-- Indicador de força da senha -->
-            <div v-if="finalPassword" class="mb-4">
-                <div class="mb-1 flex justify-between">
-                    <span>Força da senha:</span>
-                    <span>{{ strengthLabel }}</span>
-                </div>
-                <div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
-                    <div 
-                        class="h-full transition-all duration-300"
-                        :class="strengthColorClass"
-                        :style="{ width: `${strengthScore * 25}%` }"
-                    ></div>
-                </div>
-            </div>
-
-            <!-- Resultado da senha -->
-            <div class="mb-6">
+            <!-- Resultado da senha - Agora no topo e com novo estilo -->
+            <div class="password-result-container mb-6">
                 <div class="password-result">
                     <input
                         :type="showPassword ? 'text' : 'password'"
                         :value="displayPassword"
                         readonly
-                        class="w-full border-none bg-transparent focus:ring-0 dark:text-white"
+                        class="password-display"
                         aria-label="Senha gerada"
                     >
-                    <button
-                        class="password-toggle-button"
-                        @click="togglePasswordVisibility"
-                        :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
-                    >
-                        <span v-if="showPassword">👁️</span>
-                        <span v-else>👁️‍🗨️</span>
-                    </button>
-                    <button
-                        class="copy-button"
-                        @click="copyToClipboard"
-                        aria-label="Copiar senha"
-                    >
-                        {{ copyButtonText }}
-                    </button>
+                    <div class="password-actions">
+                        <button
+                            class="password-action-button"
+                            @click="togglePasswordVisibility"
+                            :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                        >
+                            <span v-if="showPassword" class="i-mdi-eye-off text-xl"></span>
+                            <span v-else class="i-mdi-eye text-xl"></span>
+                        </button>
+                        <button
+                            class="password-action-button"
+                            @click="generatePassword"
+                            :disabled="isGenerating || !isValidOptions"
+                            aria-label="Gerar nova senha"
+                        >
+                            <span class="i-mdi-refresh text-xl"></span>
+                        </button>
+                        <button
+                            class="password-action-button"
+                            @click="copyToClipboard"
+                            aria-label="Copiar senha"
+                        >
+                            <span v-if="copyButtonText === 'Copiar'" class="i-mdi-content-copy text-xl"></span>
+                            <span v-else class="i-mdi-check text-xl text-green-500"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Indicador de força da senha -->
+                <div v-if="finalPassword" class="mt-3">
+                    <div class="mb-1 flex justify-between">
+                        <span class="text-sm font-medium">Força da senha:</span>
+                        <span class="text-sm font-medium" :class="strengthTextColorClass">{{ strengthLabel }}</span>
+                    </div>
+                    <div class="strength-meter">
+                        <div 
+                            v-for="n in 4" 
+                            :key="n"
+                            class="strength-segment"
+                            :class="{ 'active': n <= strengthScore }"
+                            :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
+                        ></div>
+                    </div>
                 </div>
             </div>
 
             <button
-                class="generate-button"
+                class="generate-button mb-6"
                 :disabled="isGenerating || !isValidOptions"
                 @click="generatePassword"
                 aria-label="Gerar nova senha"
             >
                 {{ isGenerating ? 'Gerando...' : 'Gerar Nova Senha' }}
             </button>
-            
-            <p v-if="!isValidOptions" class="mt-2 text-red-500 text-sm">
-                Selecione pelo menos uma opção de caracteres.
-            </p>
+
+            <!-- Opções de configuração -->
+            <div class="options-container">
+                <h2 class="text-xl font-semibold mb-4">Personalize sua senha</h2>
+                
+                <div class="mb-4">
+                    <label class="block">
+                        <span class="text-sm font-medium">Comprimento da senha:</span>
+                        <div class="flex items-center mt-2">
+                            <input
+                                v-model.number="options.passwordLength"
+                                type="range"
+                                min="8"
+                                max="64"
+                                class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
+                                aria-label="Ajustar comprimento da senha"
+                            >
+                            <span class="ml-3 min-w-[2.5rem] text-center">{{ options.passwordLength }}</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="options-grid">
+                    <div class="option-item">
+                        <label class="option-label">
+                            <input 
+                                v-model="options.useUppercase" 
+                                type="checkbox" 
+                                class="form-checkbox"
+                                id="uppercase"
+                                aria-label="Incluir letras maiúsculas"
+                            >
+                            <span>Letras maiúsculas (A-Z)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-item">
+                        <label class="option-label">
+                            <input 
+                                v-model="options.useLowercase" 
+                                type="checkbox" 
+                                class="form-checkbox"
+                                id="lowercase"
+                                aria-label="Incluir letras minúsculas"
+                            >
+                            <span>Letras minúsculas (a-z)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-item">
+                        <label class="option-label">
+                            <input 
+                                v-model="options.useNumbers" 
+                                type="checkbox" 
+                                class="form-checkbox"
+                                id="numbers"
+                                aria-label="Incluir números"
+                            >
+                            <span>Números (0-9)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-item">
+                        <label class="option-label">
+                            <input 
+                                v-model="options.useSymbols" 
+                                type="checkbox" 
+                                class="form-checkbox"
+                                id="symbols"
+                                aria-label="Incluir símbolos"
+                            >
+                            <span>Símbolos (!@#$%^&*)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <p v-if="!isValidOptions" class="mt-4 text-red-500 text-sm">
+                    Selecione pelo menos uma opção de caracteres.
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -362,6 +382,29 @@ const copyToClipboard = async () => {
 onBeforeUnmount(() => {
     if (copyTimeout.value) clearTimeout(copyTimeout.value)
 })
+
+// Adicionar para o indicador de força da senha
+const strengthTextColorClass = computed(() => {
+    const colors = [
+        'text-red-500',
+        'text-orange-500',
+        'text-yellow-500',
+        'text-lime-500',
+        'text-green-600'
+    ]
+    return colors[strengthScore.value]
+})
+
+const getStrengthColor = (score) => {
+    const colors = [
+        '#ef4444', // red
+        '#f97316', // orange
+        '#eab308', // yellow
+        '#84cc16', // lime
+        '#22c55e'  // green
+    ]
+    return colors[score]
+}
 </script>
 
 <style lang="sass" scoped>
@@ -374,37 +417,63 @@ onBeforeUnmount(() => {
     @apply transition duration-300
     box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
 
-.option-label
-    @apply flex items-center space-x-2 cursor-pointer
-    @apply text-gray-800 dark:text-gray-200
-    @apply hover:text-primary-600 dark:hover:text-primary-400
-    @apply transition duration-300
+.password-result-container
+    @apply w-full
 
 .password-result
-    @apply flex items-center space-x-2 rounded-[12px] 
+    @apply flex flex-col sm:flex-row items-center justify-between
+    @apply rounded-[12px] 
     @apply p-4 bg-gray-100 dark:bg-gray-800
     @apply transition duration-300
+    @apply border border-gray-200 dark:border-gray-700
 
-.password-toggle-button
+.password-display
+    @apply w-full text-xl font-medium text-center sm:text-left 
+    @apply border-none bg-transparent focus:ring-0 
+    @apply dark:text-white mb-3 sm:mb-0
+    @apply overflow-hidden text-ellipsis
+
+.password-actions
+    @apply flex items-center justify-center space-x-2 
+    @apply w-full sm:w-auto
+
+.password-action-button
     @apply flex items-center justify-center 
-    @apply rounded-full p-2 
+    @apply rounded-full w-10 h-10
     @apply text-gray-600 dark:text-gray-400
     @apply hover:bg-gray-200 dark:hover:bg-gray-700
     @apply transition duration-300
 
-.copy-button
-    @apply rounded-[12px] px-4 py-2 
-    @apply bg-primary-500 text-white
-    @apply hover:bg-primary-600 
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-300
-    @apply transition duration-300
+.strength-meter
+    @apply flex h-2 w-full overflow-hidden gap-1
+
+.strength-segment
+    @apply h-full flex-1 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300
+    &.active
+        @apply bg-opacity-100
 
 .generate-button
-    @apply w-full rounded-[12px] px-4 py-2 
-    @apply bg-green-500 text-white
-    @apply hover:bg-green-600 
-    @apply focus:outline-none focus:ring-2 focus:ring-green-300
+    @apply w-full rounded-[12px] px-4 py-3
+    @apply bg-primary-500 text-white font-medium
+    @apply hover:bg-primary-600 
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-300
     @apply disabled:opacity-50 disabled:cursor-not-allowed
+    @apply transition duration-300
+    @apply text-center
+
+.options-container
+    @apply w-full p-4 bg-gray-50 dark:bg-gray-900 rounded-[12px]
+
+.options-grid
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-3
+
+.option-item
+    @apply mb-2
+
+.option-label
+    @apply flex items-center space-x-2 cursor-pointer
+    @apply text-gray-800 dark:text-gray-200
+    @apply hover:text-primary-600 dark:hover:text-primary-400
     @apply transition duration-300
 
 .form-checkbox
