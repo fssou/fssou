@@ -20,7 +20,7 @@ export default withNuxt({
             "always",
         ],
         "array-bracket-newline": [
-            "error",
+            "off",
             "always",
         ],
         "array-element-newline": [

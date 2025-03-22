@@ -2,6 +2,7 @@
 import SocialMedia from "./partials/SocialMedia.vue"
 import Summary from "./partials/Summary.vue"
 import Contact from "./partials/Contact.vue"
+import Projects from "./partials/Projects.vue"
 
 </script>
 
@@ -9,6 +10,7 @@ import Contact from "./partials/Contact.vue"
     <div class="app-tile-container">
         <Summary class="app-tile-summary" />
         <SocialMedia class="app-tile-social-media" />
+        <Projects class="app-tile-projects" />
         <Contact class="app-tile-end" />
     </div>
 </template>
@@ -29,6 +31,10 @@ import Contact from "./partials/Contact.vue"
     @apply sm:w-[60vw] sm:h-full
 
 .app-tile-social-media
+    @apply w-[100%] h-[512px]
+    @apply sm:w-[60vw] sm:h-full
+
+.app-tile-projects
     @apply w-[100%] h-[512px]
     @apply sm:w-[60vw] sm:h-full
 

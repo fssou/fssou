@@ -7,7 +7,7 @@ export function useMouse() {
 
     const onMouseWheel = (event: WheelEvent,) => {
         x.value = event.deltaX
-        y.value = event.deltaY < 0 ? event.deltaY + 50 : event.deltaY - 50
+        y.value = event.deltaY < 0 ? event.deltaY + 25 : event.deltaY - 25
     }
 
     const onWheel = (event: WheelEvent,) => {
