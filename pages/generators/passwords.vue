@@ -16,27 +16,27 @@
                     <div class="password-actions">
                         <button
                             class="password-action-button"
-                            @click="togglePasswordVisibility"
                             :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                            @click="togglePasswordVisibility"
                         >
-                            <span v-if="showPassword" class="i-mdi-eye-off text-xl"></span>
-                            <span v-else class="i-mdi-eye text-xl"></span>
+                            <span v-if="showPassword" class="i-mdi-eye-off text-xl"/>
+                            <span v-else class="i-mdi-eye text-xl"/>
                         </button>
                         <button
                             class="password-action-button"
-                            @click="generatePassword"
                             :disabled="isGenerating || !isValidOptions"
                             aria-label="Gerar nova senha"
+                            @click="generatePassword"
                         >
-                            <span class="i-mdi-refresh text-xl"></span>
+                            <span class="i-mdi-refresh text-xl"/>
                         </button>
                         <button
                             class="password-action-button"
-                            @click="copyToClipboard"
                             aria-label="Copiar senha"
+                            @click="copyToClipboard"
                         >
-                            <span v-if="copyButtonText === 'Copiar'" class="i-mdi-content-copy text-xl"></span>
-                            <span v-else class="i-mdi-check text-xl text-green-500"></span>
+                            <span v-if="copyButtonText === 'Copiar'" class="i-mdi-content-copy text-xl"/>
+                            <span v-else class="i-mdi-check text-xl text-green-500"/>
                         </button>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             class="strength-segment"
                             :class="{ 'active': n <= strengthScore }"
                             :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
-                        ></div>
+                        />
                     </div>
                 </div>
             </div>
@@ -62,26 +62,26 @@
             <button
                 class="generate-button mb-6"
                 :disabled="isGenerating || !isValidOptions"
-                @click="generatePassword"
                 aria-label="Gerar nova senha"
+                @click="generatePassword"
             >
                 {{ isGenerating ? 'Gerando...' : 'Gerar Nova Senha' }}
             </button>
 
             <!-- Opções de configuração -->
             <div class="options-container">
-                <h2 class="text-xl font-semibold mb-4">Personalize sua senha</h2>
+                <h2 class="mb-4 text-xl font-semibold">Personalize sua senha</h2>
                 
                 <div class="mb-4">
                     <label class="block">
                         <span class="text-sm font-medium">Comprimento da senha:</span>
-                        <div class="flex items-center mt-2">
+                        <div class="mt-2 flex items-center">
                             <input
                                 v-model.number="options.passwordLength"
                                 type="range"
                                 min="8"
                                 max="64"
-                                class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
+                                class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
                                 aria-label="Ajustar comprimento da senha"
                             >
                             <span class="ml-3 min-w-[2.5rem] text-center">{{ options.passwordLength }}</span>
@@ -93,10 +93,10 @@
                     <div class="option-item">
                         <label class="option-label">
                             <input 
+                                id="uppercase" 
                                 v-model="options.useUppercase" 
-                                type="checkbox" 
+                                type="checkbox"
                                 class="form-checkbox"
-                                id="uppercase"
                                 aria-label="Incluir letras maiúsculas"
                             >
                             <span>Letras maiúsculas (A-Z)</span>
@@ -106,10 +106,10 @@
                     <div class="option-item">
                         <label class="option-label">
                             <input 
+                                id="lowercase" 
                                 v-model="options.useLowercase" 
-                                type="checkbox" 
+                                type="checkbox"
                                 class="form-checkbox"
-                                id="lowercase"
                                 aria-label="Incluir letras minúsculas"
                             >
                             <span>Letras minúsculas (a-z)</span>
@@ -119,10 +119,10 @@
                     <div class="option-item">
                         <label class="option-label">
                             <input 
+                                id="numbers" 
                                 v-model="options.useNumbers" 
-                                type="checkbox" 
+                                type="checkbox"
                                 class="form-checkbox"
-                                id="numbers"
                                 aria-label="Incluir números"
                             >
                             <span>Números (0-9)</span>
@@ -132,10 +132,10 @@
                     <div class="option-item">
                         <label class="option-label">
                             <input 
+                                id="symbols" 
                                 v-model="options.useSymbols" 
-                                type="checkbox" 
+                                type="checkbox"
                                 class="form-checkbox"
-                                id="symbols"
                                 aria-label="Incluir símbolos"
                             >
                             <span>Símbolos (!@#$%^&*)</span>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 
-                <p v-if="!isValidOptions" class="mt-4 text-red-500 text-sm">
+                <p v-if="!isValidOptions" class="mt-4 text-sm text-red-500">
                     Selecione pelo menos uma opção de caracteres.
                 </p>
             </div>
@@ -271,17 +271,21 @@ const usePasswordStrength = (password) => {
     const strengthScore = computed(calculateStrength)
     
     const strengthLabel = computed(() => {
-        const labels = ['Muito fraca', 'Fraca', 'Média', 'Forte', 'Muito forte']
+        const labels = ["Muito fraca",
+            "Fraca",
+            "Média",
+            "Forte",
+            "Muito forte"]
         return labels[strengthScore.value]
     })
     
     const strengthColorClass = computed(() => {
         const colors = [
-            'bg-red-500',
-            'bg-orange-500',
-            'bg-yellow-500',
-            'bg-lime-500',
-            'bg-green-600'
+            "bg-red-500",
+            "bg-orange-500",
+            "bg-yellow-500",
+            "bg-lime-500",
+            "bg-green-600"
         ]
         return colors[strengthScore.value]
     })
@@ -386,22 +390,22 @@ onBeforeUnmount(() => {
 // Adicionar para o indicador de força da senha
 const strengthTextColorClass = computed(() => {
     const colors = [
-        'text-red-500',
-        'text-orange-500',
-        'text-yellow-500',
-        'text-lime-500',
-        'text-green-600'
+        "text-red-500",
+        "text-orange-500",
+        "text-yellow-500",
+        "text-lime-500",
+        "text-green-600"
     ]
     return colors[strengthScore.value]
 })
 
 const getStrengthColor = (score) => {
     const colors = [
-        '#ef4444', // red
-        '#f97316', // orange
-        '#eab308', // yellow
-        '#84cc16', // lime
-        '#22c55e'  // green
+        "#ef4444", // red
+        "#f97316", // orange
+        "#eab308", // yellow
+        "#84cc16", // lime
+        "#22c55e"  // green
     ]
     return colors[score]
 }
