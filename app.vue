@@ -3,14 +3,13 @@
 </script>
 
 <template>
-    <div
+    <UApp
         class="app"
     >
         <NuxtLayout>
             <NuxtPage />
         </NuxtLayout>
-        <UNotifications />
-    </div>
+    </UApp>
 </template>
 
 <style lang="sass" scoped>

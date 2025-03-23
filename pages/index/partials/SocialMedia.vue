@@ -99,7 +99,7 @@ const socialMedia = [
     @apply rounded-[20px]
     @apply cursor-pointer select-none overflow-hidden
     @apply transition duration-500 ease-in-out will-change-transform
-    @apply dark:hover:brightness-150 dark:bg-gray-950
+    @apply dark:hover:brightness-150 dark:bg-background-950
     @apply hover:bg-primary-700 hover:text-white
     box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
 

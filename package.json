@@ -10,7 +10,7 @@
     },
     "scripts": {
         "build": "nuxi build",
-        "dev": "nuxi dev --clear --host 0.0.0.0",
+        "dev": "nuxi cleanup && nuxi prepare && nuxi dev --clear --host 0.0.0.0",
         "generate": "nuxi generate",
         "preview": "nuxi preview",
         "postinstall": "nuxi prepare"
@@ -19,26 +19,27 @@
         "vue": "latest"
     },
     "dependencies": {
-        "nuxt": "^3.14.1592",
-        "axios": "^1.7.7"
+        "axios": "^1.7.7",
+        "nuxt": "^3.16.1"
     },
     "devDependencies": {
-        "@egoist/tailwindcss-icons": "^1.8.1",
-        "@iconify/json": "^2.2.274",
-        "@nuxt/devtools": "latest",
+        "@egoist/tailwindcss-icons": "^1.9.0",
+        "@iconify/json": "^2.2.319",
         "@nuxt/eslint": "^0.7.1",
-        "@nuxt/ui": "^2.19.2",
-        "@nuxt/eslint-config": "^0.7.1",
-        "@nuxt/image": "^1.8.1",
-        "@pinia/nuxt": "^0.7.0",
-        "@types/node": "^22.9.3",
+        "@nuxt/eslint-config": "^1.2.0",
+        "@nuxt/image": "^1.10.0",
+        "@nuxt/ui": "^3.0.1",
+        "@nuxtjs/tailwindcss": "^6.13.2",
+        "@pinia/nuxt": "^0.10.1",
+        "@types/node": "^22.13.11",
         "@vue/runtime-dom": "^3.5.13",
-        "@vueuse/core": "^11.3.0",
+        "@vueuse/core": "^13.0.0",
         "cobe": "^0.6.3",
-        "eslint-plugin-tailwindcss": "^3.17.5",
+        "eslint-plugin-tailwindcss": "^4.0.0-alpha.0",
         "js-sha256": "^0.11.0",
-        "pinia": "^2.2.6",
-        "typescript": "^5.7.2",
-        "sass-embedded": "^1.81.0"
+        "pinia": "^3.0.1",
+        "sass-embedded": "^1.86.0",
+        "typescript": "^5.8.2",
+        "nuxi": "latest"
     }
 }

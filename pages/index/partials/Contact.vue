@@ -74,7 +74,7 @@ const onClickYes = () => {
                         class="btn-yes"
                         @click="onClickYes"
                     >
-                        <p>🤙🏽</p>
+                        🤙🏽
                     </UButton>
                 </div>
             </div>

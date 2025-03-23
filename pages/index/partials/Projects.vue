@@ -48,7 +48,7 @@ const projects = ref<Project[]>([
                  :key="`placeholder-${i}`"
                  class="project-placeholder"
             >
-                <div class="text-center text-gray-400">
+                <div class="text-center text-black dark:text-white">
                     <div class="i-mdi-build-outline mb-2 text-3xl"/>
                     <p>Em breve</p>
                 </div>
@@ -64,7 +64,7 @@ const projects = ref<Project[]>([
     @apply rounded-[20px]
     @apply cursor-pointer select-none overflow-hidden
     @apply transition duration-500 ease-in-out will-change-transform
-    @apply dark:hover:brightness-150 dark:bg-gray-950
+    @apply dark:hover:brightness-150 dark:bg-background-950
     @apply hover:bg-primary-700 hover:text-white
     box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
 
@@ -74,22 +74,22 @@ const projects = ref<Project[]>([
     @apply rounded-[20px]
     @apply select-none overflow-hidden
     @apply dark:bg-gray-950 bg-gray-100
-    @apply border border-dashed border-gray-300 dark:border-gray-700
+    @apply border border-dashed border-gray-300 dark:bg-background-950
     box-shadow: rgba(0, 0, 0, 0.02) 0 0 0 1px inset
 
 .card-content
     @apply w-full h-full flex flex-col justify-between
 
 .icon-container
-    @apply mb-4
+    @apply mb-4 dark:text-white
 
 .text-container
     @apply w-full
 
 .project-title
-    @apply font-bold text-lg mb-1
+    @apply font-bold text-lg mb-1 dark:text-white
 
 .project-description
-    @apply text-sm text-gray-600 dark:text-gray-300
+    @apply text-sm text-[#a1a1aa]
     @apply line-clamp-2
 </style>

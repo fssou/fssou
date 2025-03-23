@@ -4,6 +4,7 @@
  */
 export default defineNuxtConfig({
     modules: [
+        "@nuxtjs/tailwindcss",
         "@nuxt/ui",
         "@nuxt/image",
         "@nuxt/eslint",

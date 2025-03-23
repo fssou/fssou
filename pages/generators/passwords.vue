@@ -12,12 +12,14 @@ const options = reactive({
     useSymbols: true
 })
 
-const displayPassword = ref("Clique em Gerar")
+const displayPassword = ref("")
 const finalPassword = ref("")
 const isGenerating = ref(false)
-const showPassword = ref(false)
-const copyButtonText = ref("Copiar")
+const showPassword = ref(true)
+const showClipboardCheck = ref(false)
 const copyTimeout = ref(null)
+// Novo estado para controlar a visibilidade do menu de opções
+const showOptionsMenu = ref(false)
 
 // Conjuntos de caracteres
 const CHARSET = {
@@ -144,8 +146,8 @@ const usePasswordStrength = (password) => {
     }
 }
 
-const { generateCharset, createPassword, ensureAllCharTypes } = usePasswordGenerator()
-const { strengthScore, strengthLabel, strengthColorClass } = usePasswordStrength(finalPassword)
+const {generateCharset, createPassword, ensureAllCharTypes} = usePasswordGenerator()
+const {strengthScore, strengthLabel, strengthColorClass} = usePasswordStrength(finalPassword)
 
 // Verificar se as opções são válidas
 const isValidOptions = computed(() => {
@@ -180,7 +182,6 @@ const animatePasswordGeneration = () => {
     const maxIterations = 64 // Número de iterações para a animação completa
 
     const animationInterval = setInterval(() => {
-        // Criar uma senha temporária aleatória
         let tempPassword = ""
         for (let i = 0; i < length; i++) {
             // Cálculo melhorado para uma transição mais suave
@@ -204,7 +205,7 @@ const animatePasswordGeneration = () => {
             displayPassword.value = targetPassword
             isGenerating.value = false
         }
-    }, 50) // Velocidade da animação (ms)
+    }, 16) // Velocidade da animação (ms)
 }
 
 const togglePasswordVisibility = () => {
@@ -214,24 +215,39 @@ const togglePasswordVisibility = () => {
 const copyToClipboard = async () => {
     try {
         await navigator.clipboard.writeText(displayPassword.value)
-        copyButtonText.value = "Copiado! ✓"
+        showClipboardCheck.value = true
 
         // Limpa qualquer timeout anterior
         if (copyTimeout.value) clearTimeout(copyTimeout.value)
 
         // Retorna ao texto original após 2 segundos
         copyTimeout.value = setTimeout(() => {
-            copyButtonText.value = "Copiar"
+            showClipboardCheck.value = false
         }, 2000)
     } catch (err) {
         console.error("Erro ao copiar a senha", err)
-        alert("Erro ao copiar a senha. Seu navegador pode não suportar esta função.")
     }
 }
 
-// Limpa qualquer timeout ao desmontar o componente
-onBeforeUnmount(() => {
-    if (copyTimeout.value) clearTimeout(copyTimeout.value)
+// Função para alternar a visibilidade do menu de opções
+const toggleOptionsMenu = () => {
+    showOptionsMenu.value = !showOptionsMenu.value
+}
+
+// Fechar o menu ao clicar fora dele
+const closeOptionsMenu = (event) => {
+    const optionsContainer = document.querySelector(".options-container")
+    const optionsButton = document.querySelector(".options-toggle-button")
+
+    if (optionsContainer && !optionsContainer.contains(event.target) &&
+        optionsButton && !optionsButton.contains(event.target)) {
+        showOptionsMenu.value = false
+    }
+}
+
+// Adicionar event listener para fechar o menu ao clicar fora
+onMounted(() => {
+    document.addEventListener("click", closeOptionsMenu)
 })
 
 // Adicionar para o indicador de força da senha
@@ -256,85 +272,88 @@ const getStrengthColor = (score) => {
     ]
     return colors[score]
 }
+
+// Limpa qualquer timeout ao desmontar o componente
+onBeforeUnmount(() => {
+    if (copyTimeout.value) clearTimeout(copyTimeout.value)
+    document.removeEventListener("click", closeOptionsMenu)
+})
 </script>
 
 <template>
     <div class="container mx-auto px-4 py-8">
-        <h1 class="mb-6 text-3xl font-bold">Gerador de Senhas Fortes</h1>
-
         <div class="password-card">
-            <!-- Resultado da senha - Agora no topo e com novo estilo -->
-            <div class="password-result-container mb-6">
-                <div class="password-result">
-                    <input
-                        :type="showPassword ? 'text' : 'password'"
-                        :value="displayPassword"
-                        readonly
-                        class="password-display"
-                        aria-label="Senha gerada"
-                    >
-                    <div class="password-actions">
-                        <button
-                            class="password-action-button"
-                            :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
-                            @click="togglePasswordVisibility"
+            <!-- Container flexível que contém tanto o resultado quanto o botão de opções -->
+            <div class="flex-container">
+                <!-- Resultado da senha -->
+                <div class="password-result-container">
+                    <div class="password-result">
+                        <input
+                            :type="showPassword ? 'text' : 'password'"
+                            :value="displayPassword"
+                            readonly
+                            class="password-display"
+                            aria-label="Senha gerada"
                         >
-                            <span v-if="showPassword" class="i-mdi-eye-off text-xl"/>
-                            <span v-else class="i-mdi-eye text-xl"/>
-                        </button>
-                        <button
-                            class="password-action-button"
-                            :disabled="isGenerating || !isValidOptions"
-                            aria-label="Gerar nova senha"
-                            @click="generatePassword"
-                        >
-                            <span class="i-mdi-refresh text-xl"/>
-                        </button>
-                        <button
-                            class="password-action-button"
-                            aria-label="Copiar senha"
-                            @click="copyToClipboard"
-                        >
-                            <span v-if="copyButtonText === 'Copiar'" class="i-mdi-content-copy text-xl"/>
-                            <span v-else class="i-mdi-check text-xl text-green-500"/>
-                        </button>
+                        <div class="password-actions">
+                            <button
+                                class="password-action-button"
+                                :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                                @click="togglePasswordVisibility"
+                            >
+                                <span v-if="showPassword" class="i-mdi-eye-off text-xl"/>
+                                <span v-else class="i-mdi-eye text-xl"/>
+                            </button>
+                            <button
+                                class="password-action-button"
+                                :disabled="isGenerating || !isValidOptions"
+                                aria-label="Gerar nova senha"
+                                @click="generatePassword"
+                            >
+                                <span class="i-mdi-refresh text-xl"/>
+                            </button>
+                            <button
+                                class="password-action-button"
+                                aria-label="Copiar senha"
+                                @click="copyToClipboard"
+                            >
+                                <span v-if="showClipboardCheck" class="i-mdi-check text-xl text-green-500"/>
+                                <span v-else class="i-mdi-content-copy text-xl"/>
+                            </button>
+                            <button
+                                class="options-toggle-button"
+                                aria-label="Opções de senha"
+                                @click.stop="toggleOptionsMenu"
+                            >
+                                <span class="i-mdi-cog text-xl"/>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Indicador de força da senha -->
-                <div v-if="finalPassword" class="mt-3">
-                    <div class="mb-1 flex justify-between">
-                        <span class="text-sm font-medium">Força da senha:</span>
-                        <span class="text-sm font-medium" :class="strengthTextColorClass">{{ strengthLabel }}</span>
-                    </div>
-                    <div class="strength-meter">
-                        <div 
-                            v-for="n in 4" 
-                            :key="n"
-                            class="strength-segment"
-                            :class="{ 'active': n <= strengthScore }"
-                            :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
-                        />
+                    <!-- Indicador de força da senha -->
+                    <div class="mt-3">
+                        <div class="strength-meter">
+                            <div
+                                v-for="n in 4"
+                                :key="n"
+                                class="strength-segment"
+                                :aria-label="`Força da senha ${strengthLabel}`"
+                                :class="{ 'active': n <= strengthScore }"
+                                :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <button
-                class="generate-button mb-6"
-                :disabled="isGenerating || !isValidOptions"
-                aria-label="Gerar nova senha"
-                @click="generatePassword"
+            <!-- Menu de opções suspenso -->
+            <div
+                v-show="showOptionsMenu"
+                class="options-container"
+                @click.stop
             >
-                {{ isGenerating ? 'Gerando...' : 'Gerar Nova Senha' }}
-            </button>
-
-            <!-- Opções de configuração -->
-            <div class="options-container">
-                <h2 class="mb-4 text-xl font-semibold">Personalize sua senha</h2>
-                
                 <div class="mb-4">
                     <label class="block">
-                        <span class="text-sm font-medium">Comprimento da senha:</span>
+                        <span class="text-sm font-medium">Tamanho:</span>
                         <div class="mt-2 flex items-center">
                             <input
                                 v-model.number="options.passwordLength"
@@ -342,7 +361,7 @@ const getStrengthColor = (score) => {
                                 min="8"
                                 max="64"
                                 class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
-                                aria-label="Ajustar comprimento da senha"
+                                aria-label="Ajustar Tamanho da Senha"
                             >
                             <span class="ml-3 min-w-[2.5rem] text-center">{{ options.passwordLength }}</span>
                         </div>
@@ -352,57 +371,57 @@ const getStrengthColor = (score) => {
                 <div class="options-grid">
                     <div class="option-item">
                         <label class="option-label">
-                            <input 
-                                id="uppercase" 
-                                v-model="options.useUppercase" 
+                            <input
+                                id="uppercase"
+                                v-model="options.useUppercase"
                                 type="checkbox"
                                 class="form-checkbox"
                                 aria-label="Incluir letras maiúsculas"
                             >
-                            <span>Letras maiúsculas (A-Z)</span>
+                            <span>A-Z</span>
                         </label>
                     </div>
 
                     <div class="option-item">
                         <label class="option-label">
-                            <input 
-                                id="lowercase" 
-                                v-model="options.useLowercase" 
+                            <input
+                                id="lowercase"
+                                v-model="options.useLowercase"
                                 type="checkbox"
                                 class="form-checkbox"
                                 aria-label="Incluir letras minúsculas"
                             >
-                            <span>Letras minúsculas (a-z)</span>
+                            <span>a-z</span>
                         </label>
                     </div>
 
                     <div class="option-item">
                         <label class="option-label">
-                            <input 
-                                id="numbers" 
-                                v-model="options.useNumbers" 
+                            <input
+                                id="numbers"
+                                v-model="options.useNumbers"
                                 type="checkbox"
                                 class="form-checkbox"
                                 aria-label="Incluir números"
                             >
-                            <span>Números (0-9)</span>
+                            <span>0-9</span>
                         </label>
                     </div>
 
                     <div class="option-item">
                         <label class="option-label">
-                            <input 
-                                id="symbols" 
-                                v-model="options.useSymbols" 
+                            <input
+                                id="symbols"
+                                v-model="options.useSymbols"
                                 type="checkbox"
                                 class="form-checkbox"
                                 aria-label="Incluir símbolos"
                             >
-                            <span>Símbolos (!@#$%^&*)</span>
+                            <span>!@#$%^&*</span>
                         </label>
                     </div>
                 </div>
-                
+
                 <p v-if="!isValidOptions" class="mt-4 text-sm text-red-500">
                     Selecione pelo menos uma opção de caracteres.
                 </p>
@@ -414,36 +433,50 @@ const getStrengthColor = (score) => {
 
 <style lang="sass" scoped>
 .password-card
-    @apply relative p-6 w-full max-w-2xl mx-auto
+    @apply relative p-6 w-full max-w-[86%] mx-auto
     @apply flex flex-col flex-nowrap content-start items-start justify-between
     @apply rounded-[20px]
-    @apply overflow-hidden
+    @apply overflow-visible
+    /* Alterado de overflow-hidden para permitir o dropdown */
     @apply bg-white dark:bg-gray-950
     @apply transition duration-300
     box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
 
+.flex-container
+    @apply w-full flex flex-row items-center justify-between
+
 .password-result-container
-    @apply w-full
+    @apply flex-1 mr-2
+
+.options-toggle
+    @apply flex justify-center items-center
+
+.options-toggle-button
+    @apply flex items-center justify-center
+    @apply rounded-full w-10 h-10
+    @apply text-gray-600 dark:text-gray-400
+    @apply hover:bg-gray-200 dark:hover:bg-gray-700
+    @apply transition duration-300
 
 .password-result
     @apply flex flex-col sm:flex-row items-center justify-between
-    @apply rounded-[12px] 
+    @apply rounded-[12px]
     @apply p-4 bg-gray-100 dark:bg-gray-800
     @apply transition duration-300
     @apply border border-gray-200 dark:border-gray-700
 
 .password-display
-    @apply w-full text-xl font-medium text-center sm:text-left 
-    @apply border-none bg-transparent focus:ring-0 
+    @apply w-full text-xl font-medium text-center sm:text-left
+    @apply border-none bg-transparent focus:ring-0
     @apply dark:text-white mb-3 sm:mb-0
     @apply overflow-hidden text-ellipsis
 
 .password-actions
-    @apply flex items-center justify-center space-x-2 
+    @apply flex items-center justify-center space-x-2
     @apply w-full sm:w-auto
 
 .password-action-button
-    @apply flex items-center justify-center 
+    @apply flex items-center justify-center
     @apply rounded-full w-10 h-10
     @apply text-gray-600 dark:text-gray-400
     @apply hover:bg-gray-200 dark:hover:bg-gray-700
@@ -457,20 +490,25 @@ const getStrengthColor = (score) => {
     &.active
         @apply bg-opacity-100
 
-.generate-button
-    @apply w-full rounded-[12px] px-4 py-3
-    @apply bg-primary-500 text-white font-medium
-    @apply hover:bg-primary-600 
-    @apply focus:outline-none focus:ring-2 focus:ring-primary-300
-    @apply disabled:opacity-50 disabled:cursor-not-allowed
-    @apply transition duration-300
-    @apply text-center
-
 .options-container
-    @apply w-full p-4 bg-gray-50 dark:bg-gray-900 rounded-[12px]
+    @apply absolute top-full right-0 mt-2 z-10
+    @apply w-72 p-4 bg-white dark:bg-gray-900 rounded-[12px]
+    @apply border border-gray-200 dark:border-gray-700
+    @apply shadow-lg
+    @apply transition-all duration-300
+    @apply origin-top-right
+    animation: slideIn 0.2s ease-in-out
+
+@keyframes slideIn
+    from
+        opacity: 0
+        transform: translateY(-10px)
+    to
+        opacity: 1
+        transform: translateY(0)
 
 .options-grid
-    @apply grid grid-cols-1 sm:grid-cols-2 gap-3
+    @apply grid grid-cols-2 gap-3
 
 .option-item
     @apply mb-2
@@ -482,7 +520,7 @@ const getStrengthColor = (score) => {
     @apply transition duration-300
 
 .form-checkbox
-    @apply rounded text-primary-500 
+    @apply rounded text-primary-500
     @apply focus:ring-primary-400
     @apply transition duration-300
 </style>
