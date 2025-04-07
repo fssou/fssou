@@ -77,54 +77,60 @@ const socialMedia = [
 </script>
 
 <template>
-    <div>
-        <div
-            class="grid h-full grid-cols-2 grid-rows-5 gap-6"
-        >
-            <SocialMediaCard
-                v-for="it in socialMedia"
-                :key="it.getName()"
-                :social-media="it"
-                :class="it.getName().toLowerCase()"
-            />
-        </div>
+    <div
+        class="grid h-full grid-cols-2 grid-rows-5 gap-6"
+    >
+        <SocialMediaCard
+            v-for="it in socialMedia"
+            :key="it.getName()"
+            :social-media="it"
+            :class="it.getName().toLowerCase()"
+        />
     </div>
 </template>
 
-<style lang="sass" scoped>
+<style scoped>
+@reference "~/assets/css/main.tw.reference.css";
 
-.base
-    @apply relative p-4 w-full
-    @apply flex flex-col flex-nowrap content-start items-start justify-between
-    @apply rounded-[20px]
-    @apply cursor-pointer select-none overflow-hidden
-    @apply transition duration-500 ease-in-out will-change-transform
-    @apply dark:hover:brightness-150 dark:bg-background-950
-    @apply hover:bg-primary-700 hover:text-white
-    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
+@utility base {
+    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0;
+    @apply relative p-4 w-full;
+    @apply flex flex-col flex-nowrap content-start items-start justify-between;
+    @apply rounded-[20px];
+    @apply cursor-pointer select-none overflow-hidden;
+    @apply transition duration-850 ease-in-out will-change-transform;
+    @apply bg-zinc-200;
+    @variant hover {
+        @apply bg-primary-400;
+        @apply text-white;
+    }
+    @variant dark {
+        @apply bg-zinc-800;
+    }
+}
 
-.twitter
-    @apply base
-    @apply row-span-2
-
-.github
-    @apply base
-
-.figma
-    @apply base
-
-.email
-    @apply base
-    @apply col-span-2
-
-.linkedin
-    @apply base
-    @apply row-span-2
-
-.codepen
-    @apply base
-
-.medium
-    @apply base
-
+.twitter {
+    @apply base;
+    @apply row-span-2;
+}
+.github {
+    @apply base;
+}
+.figma {
+    @apply base;
+}
+.email {
+    @apply base;
+    @apply col-span-2;
+}
+.linkedin {
+    @apply base;
+    @apply row-span-2;
+}
+.codepen {
+    @apply base;
+}
+.medium {
+    @apply base;
+}
 </style>

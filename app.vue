@@ -12,6 +12,6 @@
     </UApp>
 </template>
 
-<style lang="sass" scoped>
+<style>
 
 </style>

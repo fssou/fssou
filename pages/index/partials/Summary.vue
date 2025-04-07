@@ -18,14 +18,14 @@ const size: number = window.innerWidth / 1.1
             class="contents"
         >
             <div
-                class="relative flex h-full w-full select-none flex-col flex-nowrap content-start items-start justify-start gap-[24px] overflow-hidden rounded-[20px] bg-foreground dark:bg-background-950 p-[24px] shadow-thin will-change-transform transition duration-500 ease-in-out"
+                class="relative flex h-full w-full select-none flex-col flex-nowrap content-start items-start justify-start gap-[24px] overflow-hidden rounded-[20px] bg-zinc-200 dark:bg-neutral-800 p-[24px] shadow-thin will-change-transform transition duration-500 ease-in-out"
             >
                 <div
                     :class="`h-[${size}px] w-[${size}px]`"
                     class="cobe absolute bottom-0 right-0 order-[0] flex  translate-x-1/4 translate-y-1/4 opacity-100"
                 >
                     <CobeGlobe
-                        class="dark:brightness-50"
+                        class="dark:brightness-50 opacity-16"
                         :size="size"
                     />
                 </div>
@@ -125,5 +125,5 @@ const size: number = window.innerWidth / 1.1
     </div>
 </template>
 
-<style lang="sass" scoped>
+<style scoped>
 </style>

@@ -16,7 +16,8 @@ defineProps({
         <div
             class="relative order-1 flex h-[24px] w-[24px] flex-none flex-row flex-nowrap content-center items-center justify-start gap-1 overflow-visible p-0 opacity-100"
         >
-            <i
+            <UIcon
+                :name="socialMedia.getIcon()"
                 :class="`rendering-auto ${ socialMedia.getIcon() } pointer-events-none h-full w-full select-none object-contain object-center dark:text-white`"
             />
         </div>
@@ -51,6 +52,6 @@ defineProps({
     </div>
 </template>
 
-<style scoped lang="sass">
+<style scoped>
 
 </style>

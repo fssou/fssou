@@ -33,7 +33,7 @@ const projects = ref<Project[]>([
             >
                 <div class="card-content">
                     <div class="icon-container">
-                        <div :class="project.icon" class="text-3xl"/>
+                        <UIcon :name="project.icon" size="25"/>
                     </div>
                     <div class="text-container">
                         <h3 class="project-title">{{ project.name }}</h3>
@@ -57,39 +57,57 @@ const projects = ref<Project[]>([
     </div>
 </template>
 
-<style lang="sass" scoped>
-.project-card
-    @apply relative p-4 w-full h-full
-    @apply flex flex-col flex-nowrap items-start justify-between
-    @apply rounded-[20px]
-    @apply cursor-pointer select-none overflow-hidden
-    @apply transition duration-500 ease-in-out will-change-transform
-    @apply dark:hover:brightness-150 dark:bg-background-950
-    @apply hover:bg-primary-700 hover:text-white
-    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
+<style lang="css" scoped>
+@reference "~/assets/css/main.tw.reference.css";
 
-.project-placeholder
-    @apply relative p-4 w-full h-full
-    @apply flex flex-col flex-nowrap items-center justify-center
-    @apply rounded-[20px]
-    @apply select-none overflow-hidden
-    @apply dark:bg-gray-950 bg-gray-100
-    @apply border border-dashed border-gray-300 dark:bg-background-950
-    box-shadow: rgba(0, 0, 0, 0.02) 0 0 0 1px inset
+.project-card {
+    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0;
+    @apply relative p-4 w-full h-full;
+    @apply flex flex-col flex-nowrap items-start justify-between;
+    @apply rounded-[20px];
+    @apply cursor-pointer select-none overflow-hidden;
+    @apply transition duration-850 ease-in-out will-change-transform;
+    @apply bg-zinc-200;
+    @variant hover {
+        @apply text-white;
+        @apply bg-primary-400;
+    }
+    @variant dark {
+        @apply bg-zinc-800;
+    }
+}
 
-.card-content
-    @apply w-full h-full flex flex-col justify-between
+.project-placeholder {
+    box-shadow: rgba(0, 0, 0, 0.02) 0 0 0 1px inset;
+    @apply relative p-4 w-full h-full;
+    @apply flex flex-col flex-nowrap items-center justify-center;
+    @apply rounded-[20px];
+    @apply select-none overflow-hidden;
+    @apply border border-dashed border-gray-300;
+    @apply bg-zinc-200;
+    @variant dark {
+        @apply bg-zinc-800;
+    }
+}
 
-.icon-container
-    @apply mb-4 dark:text-white
+.card-content {
+    @apply w-full h-full flex flex-col justify-between;
+}
 
-.text-container
-    @apply w-full
+.icon-container {
+    @apply mb-4 dark:text-white;
+}
 
-.project-title
-    @apply font-bold text-lg mb-1 dark:text-white
+.text-container {
+    @apply w-full;
+}
 
-.project-description
-    @apply text-sm text-[#a1a1aa]
-    @apply line-clamp-2
+.project-title {
+    @apply font-bold text-lg mb-1 dark:text-white;
+}
+
+.project-description {
+    @apply text-sm font-thin;
+    @apply line-clamp-2;
+}
 </style>

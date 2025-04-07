@@ -2,7 +2,7 @@
 const app = useAppConfig()
 
 const onClickYes = () => {
-    navigateTo("https://t.me/fssou", { external: true, open: { target: "_blank", }, },)
+    navigateTo("https://t.me/fssou", {external: true, open: {target: "_blank",},},)
 }
 
 </script>
@@ -42,7 +42,7 @@ const onClickYes = () => {
                     </div>
                 </div>
                 <div
-                    class="relative order-4 flex h-min w-full flex-none flex-col flex-nowrap content-start items-start justify-start gap-0 overflow-hidden p-0 opacity-100"
+                    class="relative order-4 flex h-min w-full flex-col flex-nowrap content-start justify-start gap-0 overflow-hidden p-0 opacity-100"
                 >
                     <div
                         class="relative flex h-auto w-auto flex-none flex-shrink-0 transform-none flex-col justify-center overflow-visible whitespace-pre opacity-100 outline-none"
@@ -71,36 +71,17 @@ const onClickYes = () => {
                         </div>
                     </div>
                     <UButton
-                        class="btn-yes"
+                        class="text-center text-3xl font-medium text-white mt-4 px-3 py-3 gap-4 w-full items-center justify-center transition duration-1000 ease-in-out rounded-[12px] bg-[#27272a] hover:bg-primary-700"
+                        size="xl"
                         @click="onClickYes"
-                    >
-                        🤙🏽
-                    </UButton>
+                    >🤙🏽</UButton>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="sass" scoped>
-.btn-yes
-    @apply mt-4
-    @apply flex
-    @apply w-full
-    @apply flex-row
-    @apply items-center
-    @apply justify-center
-    @apply gap-4
-    @apply rounded-[12px]
-    @apply bg-[#27272a]
-    @apply px-3
-    @apply py-3
-    @apply text-center text-3xl
-    @apply font-medium
-    @apply text-white
-    @apply transition
-    @apply duration-1000
-    @apply ease-in-out
-    @apply hover:bg-primary-700
+<style scoped>
+@reference "~/assets/css/main.tw.reference.css";
 
 </style>

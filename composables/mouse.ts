@@ -11,8 +11,9 @@ export function useMouse() {
     }
 
     const onWheel = (event: WheelEvent,) => {
+        const velocity = 50
         if(event.currentTarget instanceof HTMLElement)
-            event.currentTarget.scrollLeft += y.value
+            event.currentTarget.scrollLeft += y.value < 0 ? y.value - velocity : y.value + velocity
     }
 
     onMounted(() => targetWheelEvent.addEventListener("wheel", onMouseWheel, { passive: true, },),)

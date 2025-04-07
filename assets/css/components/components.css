@@ -1,0 +1,27 @@
+.rounded-inherit {
+    border-radius: inherit;
+}
+
+.rendering-auto {
+    image-rendering: auto;
+}
+
+.word-break {
+    word-break: break-word;
+}
+
+.word-wrap-break {
+    word-wrap: break-word;
+}
+
+.word-wrap-inherit {
+    word-wrap: inherit;
+}
+
+.whitespace-inherit {
+    white-space: inherit;
+}
+
+.shadow-thin {
+    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0;
+}

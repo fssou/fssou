@@ -1,7 +1,4 @@
 <script setup>
-definePageMeta({
-    ssr: false
-})
 
 // Estado da aplicação
 const options = reactive({
@@ -301,8 +298,8 @@ onBeforeUnmount(() => {
                                 :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
                                 @click="togglePasswordVisibility"
                             >
-                                <span v-if="showPassword" class="i-mdi-eye-off text-xl"/>
-                                <span v-else class="i-mdi-eye text-xl"/>
+                                <UIcon v-if="showPassword" name="i-mdi-eye-off" class="text-xl"/>
+                                <UIcon v-else name="i-mdi-eye" class="text-xl"/>
                             </button>
                             <button
                                 class="password-action-button"
@@ -310,22 +307,22 @@ onBeforeUnmount(() => {
                                 aria-label="Gerar nova senha"
                                 @click="generatePassword"
                             >
-                                <span class="i-mdi-refresh text-xl"/>
+                                <UIcon name="i-mdi-refresh" class="text-xl"/>
                             </button>
                             <button
                                 class="password-action-button"
                                 aria-label="Copiar senha"
                                 @click="copyToClipboard"
                             >
-                                <span v-if="showClipboardCheck" class="i-mdi-check text-xl text-green-500"/>
-                                <span v-else class="i-mdi-content-copy text-xl"/>
+                                <UIcon v-if="showClipboardCheck" name="i-mdi-check" class="text-xl text-green-500"/>
+                                <UIcon v-else name="i-mdi-content-copy" class="text-xl"/>
                             </button>
                             <button
                                 class="options-toggle-button"
                                 aria-label="Opções de senha"
                                 @click.stop="toggleOptionsMenu"
                             >
-                                <span class="i-mdi-cog text-xl"/>
+                                <UIcon name="i-mdi-cog" class="text-xl"/>
                             </button>
                         </div>
                     </div>
@@ -431,96 +428,118 @@ onBeforeUnmount(() => {
 </template>
 
 
-<style lang="sass" scoped>
-.password-card
-    @apply relative p-6 w-full max-w-[86%] mx-auto
-    @apply flex flex-col flex-nowrap content-start items-start justify-between
-    @apply rounded-[20px]
-    @apply overflow-visible
+<style scoped>
+@reference "~/assets/css/main.tw.reference.css";
+
+.password-card {
+    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0;
+    @apply relative p-6 w-full max-w-[86%] mx-auto;
+    @apply flex flex-col flex-nowrap content-start items-start justify-between;
+    @apply rounded-[20px];
+    @apply overflow-visible;
     /* Alterado de overflow-hidden para permitir o dropdown */
-    @apply bg-white dark:bg-gray-950
-    @apply transition duration-300
-    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0
+    @apply bg-neutral-300 dark:bg-zinc-800;
+    @apply transition duration-300;
+}
 
-.flex-container
-    @apply w-full flex flex-row items-center justify-between
+.flex-container {
+    @apply w-full flex flex-row items-center justify-between;
+}
 
-.password-result-container
-    @apply flex-1 mr-2
+.password-result-container {
+    @apply flex-1 mr-2;
+}
 
-.options-toggle
-    @apply flex justify-center items-center
+.options-toggle {
+    @apply flex justify-center items-center;
+}
 
-.options-toggle-button
-    @apply flex items-center justify-center
-    @apply rounded-full w-10 h-10
-    @apply text-gray-600 dark:text-gray-400
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700
-    @apply transition duration-300
+.options-toggle-button {
+    @apply flex items-center justify-center;
+    @apply rounded-full w-10 h-10;
+    @apply text-gray-600 dark:text-gray-400;
+    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply transition duration-300;
+}
 
-.password-result
-    @apply flex flex-col sm:flex-row items-center justify-between
-    @apply rounded-[12px]
-    @apply p-4 bg-gray-100 dark:bg-gray-800
-    @apply transition duration-300
-    @apply border border-gray-200 dark:border-gray-700
+.password-result {
+    @apply flex flex-col sm:flex-row items-center justify-between;
+    @apply rounded-[12px];
+    @apply p-4 bg-gray-100 dark:bg-zinc-700;
+    @apply transition duration-300;
+    @apply border border-gray-200 dark:border-gray-700;
+}
 
-.password-display
-    @apply w-full text-xl font-medium text-center sm:text-left
-    @apply border-none bg-transparent focus:ring-0
-    @apply dark:text-white mb-3 sm:mb-0
-    @apply overflow-hidden text-ellipsis
+.password-display {
+    @apply w-full text-xl font-medium text-center sm:text-left;
+    @apply border-none bg-transparent focus:ring-0;
+    @apply dark:text-white mb-3 sm:mb-0;
+    @apply overflow-hidden text-ellipsis;
+}
 
-.password-actions
-    @apply flex items-center justify-center space-x-2
-    @apply w-full sm:w-auto
+.password-actions {
+    @apply flex items-center justify-center space-x-2;
+    @apply w-full sm:w-auto;
+}
 
-.password-action-button
-    @apply flex items-center justify-center
-    @apply rounded-full w-10 h-10
-    @apply text-gray-600 dark:text-gray-400
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700
-    @apply transition duration-300
+.password-action-button {
+    @apply flex items-center justify-center;
+    @apply rounded-full w-10 h-10;
+    @apply text-gray-600 dark:text-gray-400;
+    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply transition duration-300;
+}
 
-.strength-meter
-    @apply flex h-2 w-full overflow-hidden gap-1
+.strength-meter {
+    @apply flex h-2 w-full overflow-hidden gap-1;
+}
 
-.strength-segment
-    @apply h-full flex-1 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300
-    &.active
-        @apply bg-opacity-100
+.strength-segment {
+    @apply h-full flex-1 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300;
+    &.active {
+        @apply bg-transparent;
+    }
+}
 
-.options-container
-    @apply absolute top-full right-0 mt-2 z-10
-    @apply w-72 p-4 bg-white dark:bg-gray-900 rounded-[12px]
-    @apply border border-gray-200 dark:border-gray-700
-    @apply shadow-lg
-    @apply transition-all duration-300
-    @apply origin-top-right
-    animation: slideIn 0.2s ease-in-out
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-@keyframes slideIn
-    from
-        opacity: 0
-        transform: translateY(-10px)
-    to
-        opacity: 1
-        transform: translateY(0)
+.options-container {
+    animation: slideIn 0.2s ease-in-out;
+    @apply absolute top-full right-0 mt-2 z-10;
+    @apply w-72 p-4 bg-zinc-300 dark:bg-gray-900 rounded-[12px];
+    @apply border border-gray-200 dark:border-gray-700;
+    @apply shadow-lg;
+    @apply transition-all duration-300;
+    @apply origin-top-right;
+}
 
-.options-grid
-    @apply grid grid-cols-2 gap-3
+.options-grid {
+    @apply grid grid-cols-2 gap-3;
+}
 
-.option-item
-    @apply mb-2
+.option-item {
+    @apply mb-2;
+}
 
-.option-label
-    @apply flex items-center space-x-2 cursor-pointer
-    @apply text-gray-800 dark:text-gray-200
-    @apply hover:text-primary-600 dark:hover:text-primary-400
-    @apply transition duration-300
+.option-label {
+    @apply flex items-center space-x-2 cursor-pointer;
+    @apply text-gray-800 dark:text-gray-200;
+    @apply hover:text-primary-600 dark:hover:text-primary-400;
+    @apply transition duration-300;
+}
 
-.form-checkbox
-    @apply rounded text-primary-500
-    @apply focus:ring-primary-400
-    @apply transition duration-300
+.form-checkbox {
+    @apply rounded text-primary-500;
+    @apply focus:ring-primary-400;
+    @apply transition duration-300;
+}
 </style>

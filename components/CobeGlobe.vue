@@ -114,24 +114,24 @@ onMounted(() => {
     </div>
 </template>
 
-<style lang="sass" scoped>
-$radial-gradient: radial-gradient(circle at 50% 50%, #000000 60%, #00000000 70%)
+<style lang="css" scoped>
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000000 60%, #00000000 70%);
+    mask-image: radial-gradient(circle at 50% 50%, #000000 60%, #00000000 70%);
+}
 
-.container
-    @apply flex
-    @apply h-full
-    @apply w-full
-    @apply items-center
-    @apply justify-center
-    @apply overflow-hidden
-    @apply bg-transparent
-    -webkit-mask-image: $radial-gradient
-    mask-image: $radial-gradient
-
-.wrapper
-    @apply flex
-    @apply h-full
-    @apply w-full
-    @apply cursor-auto
-    @apply select-none
+.wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    cursor: auto;
+    user-select: none;
+}
 </style>

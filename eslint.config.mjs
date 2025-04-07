@@ -42,7 +42,6 @@ export default withNuxt({
             "error",
             4,
         ],
-        "tailwindcss/classnames-order": "warn",
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn",
     },

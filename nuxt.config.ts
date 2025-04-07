@@ -1,13 +1,12 @@
+
 /**
  * Nuxt Config | nuxt.config.ts
  * documentation: https://nuxt.com/docs/api/configuration/nuxt-config
  */
 export default defineNuxtConfig({
     modules: [
-        "@nuxtjs/tailwindcss",
         "@nuxt/ui",
         "@nuxt/image",
-        "@nuxt/eslint",
         "@pinia/nuxt",
     ],
     app: {
@@ -36,28 +35,27 @@ export default defineNuxtConfig({
             ],
         },
     },
-    appConfig: {
-    },
-    tailwindcss: {
-        editorSupport: true,
-        cssPath: [
-            "~/assets/sass/main.sass",
-            {
-                injectPosition: "first",
-            },
-        ],
-    },
-    vite: {
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    api: "modern-compiler",
-                },
-                sass: {
-                    api: "modern-compiler",
-                },
-            },
+    css: [
+        "~/assets/css/main.css",
+    ],
+    ui: {
+        theme: {
+            colors: [
+                "primary",
+                "secondary",
+                "tertiary",
+                "neutral",
+                "success",
+                "info",
+                "warning",
+                "error",
+            ],
         },
+    },
+    postcss: {
+        plugins: {
+            "@tailwindcss/postcss": {},
+        }
     },
     devtools: {
         enabled: false,
@@ -78,6 +76,7 @@ export default defineNuxtConfig({
         },
         modules: [
             "@nuxt/devtools",
+            "@nuxt/eslint",
         ],
         app: {
             head: {
@@ -85,5 +84,5 @@ export default defineNuxtConfig({
             },
         },
     },
-    compatibilityDate: "2024-07-07",
+    compatibilityDate: "2024-11-07",
 },)
