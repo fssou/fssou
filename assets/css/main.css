@@ -1,8 +1,8 @@
-@import "./fonts";
 
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@import "./fonts";
 @import "./colors";
 
 @import "./theme";

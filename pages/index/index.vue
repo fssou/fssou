@@ -10,7 +10,6 @@ import Projects from "./partials/Projects.vue"
     <div class="app-tile-container">
         <Summary class="app-tile-summary" />
         <SocialMedia class="app-tile-social-media" />
-        <Projects class="app-tile-projects" />
         <Contact class="app-tile-end" />
     </div>
 </template>
