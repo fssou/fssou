@@ -12,16 +12,20 @@ export default defineNuxtConfig({
     app: {
         rootId: "app",
         head: {
-            title: "Franclin Sousa",
+            title: "Franclin Sousa — Engenheiro de Software",
             viewport: "width=device-width, initial-scale=1",
             charset: "UTF-8",
             htmlAttrs: {
                 lang: "pt-br",
             },
             bodyAttrs: {
-                class: "is-preload",
+                class: "",
             },
             meta: [
+                { name: "description", content: "Portfólio de Franclin Sousa, Engenheiro de Software baseado no Rio de Janeiro." },
+                { property: "og:title", content: "Franclin Sousa — Engenheiro de Software" },
+                { property: "og:description", content: "Portfólio pessoal com projetos, experiência e formas de contato." },
+                { property: "og:type", content: "website" },
             ],
             link: [
                 {
