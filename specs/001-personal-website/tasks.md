@@ -75,6 +75,7 @@
 ### Implementation for User Story 3
 - [ ] T018 [US3] Implement `pages/about.vue` to display professional history.
 - [ ] T019 [US3] Add a section within `pages/about.vue` for personal interests (e.g., astronomy, music).
+- [ ] T020 [US3] Fix missing technology icons (TypeScript, Kubernetes, etc.) in `components/AboutSection.vue` by updating to valid icon names (e.g., `i-devicon-typescript-plain`, `i-devicon-kubernetes-plain`).
 
 **Checkpoint**: The About page is now functional.
 
@@ -87,12 +88,12 @@
 **Independent Test**: Navigate to the blog section, select an article, and verify that it can be read completely.
 
 ### Tests for User Story 4
-- [ ] T020 [P] [US4] Create unit tests for blog listing in `tests/pages/blog/index.spec.ts`.
+- [ ] T021 [P] [US4] Create unit tests for blog listing in `tests/pages/blog/index.spec.ts`.
 
 ### Implementation for User Story 4
-- [ ] T021 [US4] Create placeholder Markdown files in `content/blog/` based on `Article Content Schema`.
-- [ ] T022 [US4] Implement `pages/blog/index.vue` to query and list articles using `@nuxt/content`.
-- [ ] T023 [US4] Implement dynamic route `pages/blog/[...slug].vue` to render individual Markdown articles using `<ContentDoc>`.
+- [ ] T022 [US4] Create placeholder Markdown files in `content/blog/` based on `Article Content Schema`.
+- [ ] T023 [US4] Implement `pages/blog/index.vue` to query and list articles using `@nuxt/content`.
+- [ ] T024 [US4] Implement dynamic route `pages/blog/[...slug].vue` to render individual Markdown articles using `<ContentDoc>`.
 
 **Checkpoint**: The Blog section is now fully functional.
 
@@ -105,11 +106,11 @@
 **Independent Test**: Toggle the theme or change system settings and verify the website UI adjusts accordingly.
 
 ### Tests for User Story 5
-- [ ] T024 [P] [US5] Create unit test for ThemeToggle component in `tests/components/ThemeToggle.spec.ts`.
+- [ ] T025 [P] [US5] Create unit test for ThemeToggle component in `tests/components/ThemeToggle.spec.ts`.
 
 ### Implementation for User Story 5
-- [ ] T025 [US5] Implement `ThemeToggle` component in `components/ThemeToggle.vue` using VueUse's `useDark` or Nuxt UI's built-in color mode functionality.
-- [ ] T026 [US5] Integrate `ThemeToggle` component into the common header in `layouts/default.vue`.
+- [ ] T026 [US5] Implement `ThemeToggle` component in `components/ThemeToggle.vue` using VueUse's `useDark` or Nuxt UI's built-in color mode functionality.
+- [ ] T027 [US5] Integrate `ThemeToggle` component into the common header in `layouts/default.vue`.
 
 **Checkpoint**: Dark mode support is now enabled across the website.
 
@@ -119,11 +120,11 @@
 
 **Purpose**: Improvements that affect multiple user stories.
 
-- [ ] T027 [P] Optimize images and static assets in the `public/` directory for faster load times.
-- [ ] T028 Audit all pages and components for SEO-friendly HTML tags (title, description meta tags) using Nuxt's `useHead`.
-- [ ] T029 Review and refine responsive design across mobile, tablet, and desktop breakpoints.
-- [ ] T030 Ensure "Coming soon" fallback messages are displayed when no projects or articles are available.
-- [ ] T031 Perform a final build validation (`nuxi generate`) to ensure static generation completes without errors.
+- [ ] T028 [P] Optimize images and static assets in the `public/` directory for faster load times.
+- [ ] T029 Audit all pages and components for SEO-friendly HTML tags (title, description meta tags) using Nuxt's `useHead`.
+- [ ] T030 Review and refine responsive design across mobile, tablet, and desktop breakpoints.
+- [ ] T031 Ensure "Coming soon" fallback messages are displayed when no projects or articles are available.
+- [ ] T032 Perform a final build validation (`nuxi generate`) to ensure static generation completes without errors.
 
 ---
 
@@ -137,6 +138,6 @@
 
 ### Parallel Opportunities
 - Task T008 (SocialLink) can be implemented in parallel with the layout in Phase 2.
-- Testing tasks (T009, T012, T013, T017, T020, T024) can be written simultaneously before their respective implementations.
-- Component implementations (T014, T025) can be handled independently from page layouts.
-- Content creation (T015, T021) can happen concurrently with any other tasks.
+- Testing tasks (T009, T012, T013, T017, T021, T025) can be written simultaneously before their respective implementations.
+- Component implementations (T014, T026) can be handled independently from page layouts.
+- Content creation (T015, T022) can happen concurrently with any other tasks.

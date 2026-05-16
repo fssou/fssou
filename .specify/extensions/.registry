@@ -8,7 +8,14 @@
       "enabled": true,
       "priority": 10,
       "registered_commands": {
-        "gemini": [
+        "agy": [
+          "speckit.git.feature",
+          "speckit.git.validate",
+          "speckit.git.remote",
+          "speckit.git.initialize",
+          "speckit.git.commit"
+        ],
+        "codex": [
           "speckit.git.feature",
           "speckit.git.validate",
           "speckit.git.remote",
@@ -17,7 +24,7 @@
         ]
       },
       "registered_skills": [],
-      "installed_at": "2026-05-15T07:06:59.922682+00:00"
+      "installed_at": "2026-05-15T09:08:55.028449+00:00"
     }
   }
 }
