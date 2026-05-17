@@ -4,7 +4,6 @@ on:
   push:
     branches-ignore:
       - main
-  # Permite execução manual caso o trigger automático falhe
   workflow_dispatch:
 
 permissions:
@@ -18,26 +17,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Check and Create Pull Request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BRANCH="${{ github.ref_name }}"
-          echo "Branch: $BRANCH"
-
           # Verifica se já existe um Pull Request aberto desta branch para a main
-          PR_EXISTS=$(gh pr list --head "$BRANCH" --base main --json number --jq 'length')
-
+          PR_EXISTS=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq 'length')
+          
           if [ "$PR_EXISTS" -eq 0 ]; then
-            echo "Nenhum Pull Request aberto encontrado. Criando PR da branch $BRANCH para a main..."
+            echo "Nenhum Pull Request aberto encontrado. Criando PR da branch ${{ github.ref_name }} para a main..."
             gh pr create \
               --base main \
-              --head "$BRANCH" \
-              --title "Merge $BRANCH into main" \
-              --body "Este Pull Request foi gerado automaticamente pelo workflow de Auto PR ao receber um push na branch \`$BRANCH\`."
+              --head "${{ github.ref_name }}" \
+              --title "Merge ${{ github.ref_name }} into main" \
+              --body "Este Pull Request foi gerado automaticamente pelo workflow de Auto PR ao receber um push na branch \`${{ github.ref_name }}\`."
           else
-            echo "Já existe um Pull Request aberto para a branch $BRANCH. Ignorando criação."
+            echo "Já existe um Pull Request aberto para a branch ${{ github.ref_name }}. Ignorando criação."
           fi
