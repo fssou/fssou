@@ -57,14 +57,19 @@ const interests = [
                         <h3 class="about__card-title">Tecnologias</h3>
                     </div>
                     <div class="about__skills-grid">
-                        <div
+                        <UTooltip
                             v-for="skill in skills"
                             :key="skill.name"
-                            class="about__skill"
+                            :text="skill.name"
                         >
-                            <UIcon :name="skill.icon" class="about__skill-icon" />
-                            <span class="about__skill-name">{{ skill.name }}</span>
-                        </div>
+                            <div
+                                class="about__skill"
+                                :aria-label="skill.name"
+                                role="img"
+                            >
+                                <UIcon :name="skill.icon" class="about__skill-icon" />
+                            </div>
+                        </UTooltip>
                     </div>
                 </div>
 
@@ -181,8 +186,9 @@ const interests = [
 }
 
 .about__skill {
-    @apply flex items-center gap-2.5;
-    @apply px-4 py-3;
+    @apply flex items-center justify-center;
+    @apply aspect-square;
+    @apply p-4;
     @apply rounded-xl;
     @apply bg-white dark:bg-zinc-800;
     @apply border border-zinc-100 dark:border-zinc-700;
@@ -197,13 +203,7 @@ const interests = [
 }
 
 .about__skill-icon {
-    @apply text-xl;
-}
-
-.about__skill-name {
-    @apply text-sm font-medium;
-    @apply text-zinc-700 dark:text-zinc-300;
-    font-family: 'Inter', sans-serif;
+    @apply text-3xl;
 }
 
 .about__interests-list {
