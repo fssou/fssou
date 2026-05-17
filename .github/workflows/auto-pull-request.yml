@@ -1,0 +1,36 @@
+name: Auto Pull Request to Main
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check and Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Verifica se já existe um Pull Request aberto desta branch para a main
+          PR_EXISTS=$(gh pr list --head "${{ github.ref_name }}" --base main --json number --jq 'length')
+          
+          if [ "$PR_EXISTS" -eq 0 ]; then
+            echo "Nenhum Pull Request aberto encontrado. Criando PR da branch ${{ github.ref_name }} para a main..."
+            gh pr create \
+              --base main \
+              --head "${{ github.ref_name }}" \
+              --title "Merge ${{ github.ref_name }} into main" \
+              --body "Este Pull Request foi gerado automaticamente pelo workflow de Auto PR ao receber um push na branch \`${{ github.ref_name }}\`."
+          else
+            echo "Já existe um Pull Request aberto para a branch ${{ github.ref_name }}. Ignorando criação."
+          fi
