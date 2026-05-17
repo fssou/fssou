@@ -75,7 +75,7 @@
 ### Implementation for User Story 3
 - [ ] T018 [US3] Implement `pages/about.vue` to display professional history.
 - [ ] T019 [US3] Add a section within `pages/about.vue` for personal interests (e.g., astronomy, music).
-- [ ] T020 [US3] Fix missing technology icons (TypeScript, Kubernetes, etc.) in `components/AboutSection.vue` by updating to valid icon names (e.g., `i-devicon-typescript-plain`, `i-devicon-kubernetes-plain`).
+- [x] T020 [US3] Fix technology icons in `components/AboutSection.vue`: removed text labels, added UTooltip for discoverability, added aria-label/role="img" for accessibility, applied aspect-square layout with consistent sizing. Details in `fix-tech-icons/` subdirectory.
 
 **Checkpoint**: The About page is now functional.
 
