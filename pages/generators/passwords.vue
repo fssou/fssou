@@ -278,148 +278,144 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
         <div class="password-card">
-            <!-- Container flexível que contém tanto o resultado quanto o botão de opções -->
-            <div class="flex-container">
-                <!-- Resultado da senha -->
-                <div class="password-result-container">
-                    <div class="password-result">
-                        <input
-                            :type="showPassword ? 'text' : 'password'"
-                            :value="displayPassword"
-                            readonly
-                            class="password-display"
-                            aria-label="Senha gerada"
-                        >
-                        <div class="password-actions">
-                            <button
-                                class="password-action-button"
-                                :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
-                                @click="togglePasswordVisibility"
-                            >
-                                <UIcon v-if="showPassword" name="i-mdi-eye-off" class="text-xl"/>
-                                <UIcon v-else name="i-mdi-eye" class="text-xl"/>
-                            </button>
-                            <button
-                                class="password-action-button"
-                                :disabled="isGenerating || !isValidOptions"
-                                aria-label="Gerar nova senha"
-                                @click="generatePassword"
-                            >
-                                <UIcon name="i-mdi-refresh" class="text-xl"/>
-                            </button>
-                            <button
-                                class="password-action-button"
-                                aria-label="Copiar senha"
-                                @click="copyToClipboard"
-                            >
-                                <UIcon v-if="showClipboardCheck" name="i-mdi-check" class="text-xl text-green-500"/>
-                                <UIcon v-else name="i-mdi-content-copy" class="text-xl"/>
-                            </button>
-                            <button
-                                class="options-toggle-button"
-                                aria-label="Opções de senha"
-                                @click.stop="toggleOptionsMenu"
-                            >
-                                <UIcon name="i-mdi-cog" class="text-xl"/>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Indicador de força da senha -->
-                    <div class="mt-3">
-                        <div class="strength-meter">
-                            <div
-                                v-for="n in 4"
-                                :key="n"
-                                class="strength-segment"
-                                :aria-label="`Força da senha ${strengthLabel}`"
-                                :class="{ 'active': n <= strengthScore }"
-                                :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
-                            />
-                        </div>
-                    </div>
+            <!-- Password Display & Actions -->
+            <div class="password-result">
+                <input
+                    :type="showPassword ? 'text' : 'password'"
+                    :value="displayPassword"
+                    readonly
+                    class="password-display"
+                    aria-label="Senha gerada"
+                    placeholder="Clique em gerar para criar uma senha"
+                >
+                <div class="password-actions">
+                    <button
+                        class="password-action-button"
+                        :aria-label="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                        @click="togglePasswordVisibility"
+                    >
+                        <UIcon v-if="showPassword" name="i-mdi-eye-off" class="text-xl"/>
+                        <UIcon v-else name="i-mdi-eye" class="text-xl"/>
+                    </button>
+                    <button
+                        class="password-action-button"
+                        :disabled="isGenerating || !isValidOptions"
+                        aria-label="Gerar nova senha"
+                        @click="generatePassword"
+                    >
+                        <UIcon name="i-mdi-refresh" class="text-xl" :class="{ 'animate-spin': isGenerating }"/>
+                    </button>
+                    <button
+                        class="password-action-button"
+                        aria-label="Copiar senha"
+                        @click="copyToClipboard"
+                    >
+                        <UIcon v-if="showClipboardCheck" name="i-mdi-check" class="text-xl text-green-500 dark:text-green-400"/>
+                        <UIcon v-else name="i-mdi-content-copy" class="text-xl"/>
+                    </button>
+                    <button
+                        class="password-action-button"
+                        aria-label="Opções de senha"
+                        :class="{ 'active': showOptionsMenu }"
+                        @click.stop="toggleOptionsMenu"
+                    >
+                        <UIcon name="i-mdi-cog" class="text-xl"/>
+                    </button>
                 </div>
             </div>
-            <!-- Menu de opções suspenso -->
+
+            <!-- Strength Meter -->
+            <div class="strength-section">
+                <div class="strength-header">
+                    <span class="strength-title">Força da Senha</span>
+                    <span
+                        v-if="finalPassword"
+                        class="strength-label"
+                        :class="strengthTextColorClass"
+                    >{{ strengthLabel }}</span>
+                </div>
+                <div class="strength-meter">
+                    <div
+                        v-for="n in 4"
+                        :key="n"
+                        class="strength-segment"
+                        :aria-label="`Força da senha ${strengthLabel}`"
+                        :class="{ 'active': n <= strengthScore }"
+                        :style="{ 'background-color': n <= strengthScore ? getStrengthColor(strengthScore) : '' }"
+                    />
+                </div>
+            </div>
+
+            <!-- Options Panel (integrated in card flow) -->
             <div
                 v-show="showOptionsMenu"
-                class="options-container"
+                class="options-panel"
                 @click.stop
             >
-                <div class="mb-4">
-                    <label class="block">
-                        <span class="text-sm font-medium">Tamanho:</span>
-                        <div class="mt-2 flex items-center">
-                            <input
-                                v-model.number="options.passwordLength"
-                                type="range"
-                                min="8"
-                                max="64"
-                                class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
-                                aria-label="Ajustar Tamanho da Senha"
-                            >
-                            <span class="ml-3 min-w-[2.5rem] text-center">{{ options.passwordLength }}</span>
-                        </div>
+                <!-- Length Slider -->
+                <div class="slider-section">
+                    <div class="slider-header">
+                        <span class="slider-title">Comprimento</span>
+                        <span class="slider-badge">{{ options.passwordLength }}</span>
+                    </div>
+                    <input
+                        v-model.number="options.passwordLength"
+                        type="range"
+                        min="8"
+                        max="64"
+                        class="slider-input"
+                        aria-label="Ajustar Tamanho da Senha"
+                    >
+                </div>
+
+                <!-- Character Set Checkboxes -->
+                <div class="options-grid">
+                    <label class="option-card" for="opt-uppercase">
+                        <input
+                            id="opt-uppercase"
+                            v-model="options.useUppercase"
+                            type="checkbox"
+                            class="option-checkbox"
+                        >
+                        <span class="option-text">Maiúsculas (A-Z)</span>
+                    </label>
+
+                    <label class="option-card" for="opt-lowercase">
+                        <input
+                            id="opt-lowercase"
+                            v-model="options.useLowercase"
+                            type="checkbox"
+                            class="option-checkbox"
+                        >
+                        <span class="option-text">Minúsculas (a-z)</span>
+                    </label>
+
+                    <label class="option-card" for="opt-numbers">
+                        <input
+                            id="opt-numbers"
+                            v-model="options.useNumbers"
+                            type="checkbox"
+                            class="option-checkbox"
+                        >
+                        <span class="option-text">Números (0-9)</span>
+                    </label>
+
+                    <label class="option-card" for="opt-symbols">
+                        <input
+                            id="opt-symbols"
+                            v-model="options.useSymbols"
+                            type="checkbox"
+                            class="option-checkbox"
+                        >
+                        <span class="option-text">Símbolos (!@#$%)</span>
                     </label>
                 </div>
 
-                <div class="options-grid">
-                    <div class="option-item">
-                        <label class="option-label">
-                            <input
-                                id="uppercase"
-                                v-model="options.useUppercase"
-                                type="checkbox"
-                                class="form-checkbox"
-                                aria-label="Incluir letras maiúsculas"
-                            >
-                            <span>A-Z</span>
-                        </label>
-                    </div>
-
-                    <div class="option-item">
-                        <label class="option-label">
-                            <input
-                                id="lowercase"
-                                v-model="options.useLowercase"
-                                type="checkbox"
-                                class="form-checkbox"
-                                aria-label="Incluir letras minúsculas"
-                            >
-                            <span>a-z</span>
-                        </label>
-                    </div>
-
-                    <div class="option-item">
-                        <label class="option-label">
-                            <input
-                                id="numbers"
-                                v-model="options.useNumbers"
-                                type="checkbox"
-                                class="form-checkbox"
-                                aria-label="Incluir números"
-                            >
-                            <span>0-9</span>
-                        </label>
-                    </div>
-
-                    <div class="option-item">
-                        <label class="option-label">
-                            <input
-                                id="symbols"
-                                v-model="options.useSymbols"
-                                type="checkbox"
-                                class="form-checkbox"
-                                aria-label="Incluir símbolos"
-                            >
-                            <span>!@#$%^&*</span>
-                        </label>
-                    </div>
-                </div>
-
-                <p v-if="!isValidOptions" class="mt-4 text-sm text-red-500">
+                <!-- Validation Warning -->
+                <p v-if="!isValidOptions" class="validation-warning">
+                    <UIcon name="i-mdi-alert-circle-outline" class="text-base mr-1"/>
                     Selecione pelo menos uma opção de caracteres.
                 </p>
             </div>
@@ -431,80 +427,98 @@ onBeforeUnmount(() => {
 <style scoped>
 @reference "~/assets/css/main.tw.reference.css";
 
+/* ── Card Principal ── */
 .password-card {
-    box-shadow: rgba(0, 0, 0, 0.06) 0 0 0 1px inset, rgba(0, 0, 0, 0.04) 0 2px 4px 0;
-    @apply relative p-6 w-full max-w-[86%] mx-auto;
-    @apply flex flex-col flex-nowrap content-start items-start justify-between;
-    @apply rounded-[20px];
-    @apply overflow-visible;
-    /* Alterado de overflow-hidden para permitir o dropdown */
-    @apply bg-neutral-300 dark:bg-zinc-800;
-    @apply transition duration-300;
+    @apply relative mx-auto w-full max-w-2xl;
+    @apply flex flex-col gap-6;
+    @apply p-6 md:p-8;
+    @apply rounded-2xl;
+    @apply bg-neutral-200 dark:bg-zinc-800/90;
+    @apply border border-neutral-300 dark:border-zinc-700/50;
+    @apply shadow-xl backdrop-blur-sm;
+    @apply transition-all duration-300;
 }
 
-.flex-container {
-    @apply w-full flex flex-row items-center justify-between;
-}
-
-.password-result-container {
-    @apply flex-1 mr-2;
-}
-
-.options-toggle {
-    @apply flex justify-center items-center;
-}
-
-.options-toggle-button {
-    @apply flex items-center justify-center;
-    @apply rounded-full w-10 h-10;
-    @apply text-gray-600 dark:text-gray-400;
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
-    @apply transition duration-300;
-}
-
+/* ── Display e Ações ── */
 .password-result {
-    @apply flex flex-col sm:flex-row items-center justify-between;
-    @apply rounded-[12px];
-    @apply p-4 bg-gray-100 dark:bg-zinc-700;
-    @apply transition duration-300;
-    @apply border border-gray-200 dark:border-gray-700;
+    @apply flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4;
+    @apply p-4;
+    @apply rounded-xl;
+    @apply bg-neutral-100 dark:bg-zinc-900/50;
+    @apply border border-neutral-300 dark:border-zinc-700/50;
+    @apply transition-colors duration-200;
 }
 
 .password-display {
-    @apply w-full text-xl font-medium text-center sm:text-left;
-    @apply border-none bg-transparent focus:ring-0;
-    @apply dark:text-white mb-3 sm:mb-0;
+    @apply w-full font-mono text-xl md:text-2xl font-medium;
+    @apply text-center sm:text-left;
+    @apply bg-transparent border-none focus:ring-0 focus:outline-none;
+    @apply text-neutral-800 dark:text-neutral-100;
     @apply overflow-hidden text-ellipsis;
+    @apply placeholder:text-neutral-400 dark:placeholder:text-neutral-600;
 }
 
 .password-actions {
-    @apply flex items-center justify-center space-x-2;
+    @apply flex items-center justify-center sm:justify-end gap-2;
     @apply w-full sm:w-auto;
+    @apply flex-shrink-0;
 }
 
 .password-action-button {
     @apply flex items-center justify-center;
-    @apply rounded-full w-10 h-10;
-    @apply text-gray-600 dark:text-gray-400;
-    @apply hover:bg-gray-200 dark:hover:bg-gray-700;
-    @apply transition duration-300;
-}
+    @apply w-10 h-10 rounded-lg;
+    @apply bg-neutral-200 dark:bg-zinc-800;
+    @apply text-neutral-700 dark:text-neutral-300;
+    @apply hover:bg-neutral-300 dark:hover:bg-zinc-700;
+    @apply transition-colors duration-200;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
 
-.strength-meter {
-    @apply flex h-2 w-full overflow-hidden gap-1;
-}
-
-.strength-segment {
-    @apply h-full flex-1 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300;
     &.active {
-        @apply bg-transparent;
+        @apply bg-primary-100 dark:bg-primary-900/30;
+        @apply text-primary-600 dark:text-primary-400;
     }
 }
 
-@keyframes slideIn {
+/* ── Medidor de Força ── */
+.strength-section {
+    @apply flex flex-col gap-2;
+}
+
+.strength-header {
+    @apply flex items-center justify-between;
+}
+
+.strength-title {
+    @apply text-sm font-medium text-neutral-600 dark:text-neutral-400;
+}
+
+.strength-label {
+    @apply text-xs font-semibold uppercase tracking-wider;
+    @apply transition-colors duration-300;
+}
+
+.strength-meter {
+    @apply flex h-2 w-full gap-1 overflow-hidden;
+}
+
+.strength-segment {
+    @apply h-full flex-1 rounded-full;
+    @apply bg-neutral-300 dark:bg-zinc-700;
+    @apply transition-all duration-300;
+}
+
+/* ── Painel de Opções ── */
+.options-panel {
+    @apply flex flex-col gap-6;
+    @apply pt-5;
+    @apply border-t border-neutral-300 dark:border-zinc-700/50;
+    animation: fadeSlideIn 0.25s ease-out;
+}
+
+@keyframes fadeSlideIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-8px);
     }
     to {
         opacity: 1;
@@ -512,34 +526,65 @@ onBeforeUnmount(() => {
     }
 }
 
-.options-container {
-    animation: slideIn 0.2s ease-in-out;
-    @apply absolute top-full right-0 mt-2 z-10;
-    @apply w-72 p-4 bg-zinc-300 dark:bg-gray-900 rounded-[12px];
-    @apply border border-gray-200 dark:border-gray-700;
-    @apply shadow-lg;
-    @apply transition-all duration-300;
-    @apply origin-top-right;
+/* ── Slider ── */
+.slider-section {
+    @apply flex flex-col gap-3;
 }
 
+.slider-header {
+    @apply flex items-center justify-between;
+}
+
+.slider-title {
+    @apply text-sm font-medium text-neutral-700 dark:text-neutral-300;
+}
+
+.slider-badge {
+    @apply font-mono text-xs font-semibold;
+    @apply bg-neutral-300 dark:bg-zinc-700;
+    @apply text-neutral-700 dark:text-neutral-300;
+    @apply px-2.5 py-1 rounded-md;
+}
+
+.slider-input {
+    @apply w-full h-2;
+    @apply bg-neutral-300 dark:bg-zinc-700;
+    @apply rounded-lg appearance-none cursor-pointer;
+    @apply accent-primary-500;
+}
+
+/* ── Grade de Opções ── */
 .options-grid {
-    @apply grid grid-cols-2 gap-3;
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-3;
 }
 
-.option-item {
-    @apply mb-2;
+.option-card {
+    @apply flex items-center gap-3;
+    @apply p-3 rounded-lg cursor-pointer;
+    @apply bg-neutral-100 dark:bg-zinc-900/40;
+    @apply border border-neutral-300 dark:border-zinc-700/50;
+    @apply hover:border-primary-500/50 dark:hover:border-primary-500/40;
+    @apply transition-colors duration-200;
 }
 
-.option-label {
-    @apply flex items-center space-x-2 cursor-pointer;
-    @apply text-gray-800 dark:text-gray-200;
-    @apply hover:text-primary-600 dark:hover:text-primary-400;
-    @apply transition duration-300;
+.option-checkbox {
+    @apply rounded;
+    @apply border-neutral-400 dark:border-neutral-600;
+    @apply text-primary-500;
+    @apply focus:ring-primary-500 focus:ring-offset-0;
+    @apply dark:bg-zinc-800;
+    @apply transition duration-200;
 }
 
-.form-checkbox {
-    @apply rounded text-primary-500;
-    @apply focus:ring-primary-400;
-    @apply transition duration-300;
+.option-text {
+    @apply text-sm font-medium;
+    @apply text-neutral-700 dark:text-neutral-300;
+}
+
+/* ── Aviso de Validação ── */
+.validation-warning {
+    @apply flex items-center;
+    @apply text-sm text-red-500 dark:text-red-400;
+    @apply font-medium;
 }
 </style>

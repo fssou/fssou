@@ -136,7 +136,7 @@ onMounted(() => {
 }
 
 .main-content {
-    @apply flex-1 w-full;
+    @apply flex-1 w-full pt-16;
 }
 
 /* ─── Navbar ─── */
