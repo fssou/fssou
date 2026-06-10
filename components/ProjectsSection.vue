@@ -84,13 +84,13 @@ const navigateToProject = (project: Project) => {
 <style scoped>
 @reference "~/assets/css/main.tw.reference.css";
 
-.projects { @apply py-24 px-6 bg-zinc-50 dark:bg-zinc-950; }
+.projects { @apply py-24 px-6 bg-transparent; }
 .projects__container { @apply max-w-6xl mx-auto; }
 .projects__header { @apply text-center mb-16; }
 .projects__label {
     @apply inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest;
-    @apply bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400;
-    @apply border border-indigo-100 dark:border-indigo-900 mb-4;
+    @apply bg-white/40 dark:bg-white/5 text-indigo-600 dark:text-indigo-400;
+    @apply border border-white/50 dark:border-white/10 backdrop-blur-md mb-4;
     font-family: 'Inter', sans-serif;
 }
 .projects__title {
@@ -103,18 +103,22 @@ const navigateToProject = (project: Project) => {
 }
 .projects__grid { @apply grid grid-cols-1 md:grid-cols-2 gap-6; }
 .project-card {
-    @apply p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800;
+    @apply p-6 rounded-2xl bg-white/50 dark:bg-zinc-900/40 border border-white/50 dark:border-white/10;
     @apply flex flex-col gap-5 cursor-pointer transition-all duration-300;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.06);
 }
 .project-card:hover {
-    @apply border-zinc-200 dark:border-zinc-700 shadow-xl;
+    @apply border-white/70 dark:border-white/20;
     transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.14);
 }
 .project-card--placeholder {
-    @apply cursor-default border-dashed bg-zinc-50/50 dark:bg-zinc-900/50;
+    @apply cursor-default border-dashed bg-white/25 dark:bg-zinc-900/25;
     @apply flex items-center justify-center min-h-[200px];
 }
-.project-card--placeholder:hover { transform: none; @apply shadow-none; }
+.project-card--placeholder:hover { transform: none; box-shadow: none; }
 .project-card__header { @apply flex items-start justify-between; }
 .project-card__icon-wrapper { @apply w-12 h-12 rounded-xl flex items-center justify-center; }
 .project-card__icon { @apply text-2xl; }
@@ -122,7 +126,7 @@ const navigateToProject = (project: Project) => {
 .project-card__link {
     @apply p-2 rounded-lg text-zinc-400 dark:text-zinc-600;
     @apply hover:text-zinc-700 dark:hover:text-zinc-300;
-    @apply hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 text-lg;
+    @apply hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-200 text-lg;
 }
 .project-card__body { @apply flex-1; }
 .project-card__name {
@@ -136,7 +140,8 @@ const navigateToProject = (project: Project) => {
 .project-card__footer { @apply flex flex-wrap gap-2; }
 .project-card__tech {
     @apply px-2.5 py-1 rounded-md text-xs font-medium;
-    @apply bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400;
+    @apply bg-white/40 dark:bg-white/10 border border-white/40 dark:border-white/10;
+    @apply text-zinc-600 dark:text-zinc-400 backdrop-blur-sm;
     font-family: 'Martian Mono', monospace;
 }
 .project-card__placeholder-content {

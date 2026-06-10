@@ -46,7 +46,7 @@ const openEmail = () => {
 @reference "~/assets/css/main.tw.reference.css";
 
 .contact {
-    @apply bg-zinc-50 dark:bg-zinc-950;
+    @apply bg-transparent;
 }
 .contact__container {
     @apply max-w-6xl mx-auto px-6 py-24;
@@ -57,8 +57,8 @@ const openEmail = () => {
 }
 .contact__label {
     @apply inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest;
-    @apply bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400;
-    @apply border border-indigo-100 dark:border-indigo-900;
+    @apply bg-white/40 dark:bg-white/5 text-indigo-600 dark:text-indigo-400;
+    @apply border border-white/50 dark:border-white/10 backdrop-blur-md;
     font-family: 'Inter', sans-serif;
 }
 .contact__title {
@@ -83,11 +83,15 @@ const openEmail = () => {
     @apply hover:-translate-y-0.5;
 }
 .contact__btn--secondary {
-    @apply bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300;
-    @apply hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:-translate-y-0.5;
+    @apply bg-white/40 dark:bg-white/5 text-zinc-700 dark:text-zinc-300;
+    @apply border border-white/50 dark:border-white/10 backdrop-blur-md shadow-sm;
+    @apply hover:bg-white/60 dark:hover:bg-white/10 hover:-translate-y-0.5;
 }
 .contact__footer {
-    @apply border-t border-zinc-100 dark:border-zinc-800;
+    @apply border-t border-white/40 dark:border-white/10;
+    @apply bg-white/30 dark:bg-zinc-900/30;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 .contact__footer-inner {
     @apply max-w-6xl mx-auto px-6 py-8 text-center;

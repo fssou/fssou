@@ -137,8 +137,10 @@ const scrollToContact = () => {
 .hero__badge {
     @apply inline-flex items-center gap-2;
     @apply px-4 py-2 rounded-full;
-    @apply bg-indigo-50 dark:bg-indigo-950/50;
-    @apply border border-indigo-200 dark:border-indigo-800;
+    @apply bg-white/40 dark:bg-white/5;
+    @apply border border-white/50 dark:border-white/10;
+    @apply backdrop-blur-md;
+    @apply shadow-sm;
     @apply text-sm font-medium;
     @apply text-indigo-700 dark:text-indigo-300;
     font-family: 'Inter', sans-serif;
@@ -167,7 +169,7 @@ const scrollToContact = () => {
     @apply rounded-full;
     @apply object-cover;
     @apply shadow-lg;
-    @apply ring-4 ring-white dark:ring-zinc-800;
+    @apply ring-4 ring-white/60 dark:ring-white/10;
 }
 
 .hero__avatar-ring {
@@ -243,9 +245,12 @@ const scrollToContact = () => {
 }
 
 .hero__btn--secondary {
-    @apply bg-zinc-100 dark:bg-zinc-800;
+    @apply bg-white/40 dark:bg-white/5;
     @apply text-zinc-700 dark:text-zinc-300;
-    @apply hover:bg-zinc-200 dark:hover:bg-zinc-700;
+    @apply border border-white/50 dark:border-white/10;
+    @apply backdrop-blur-md;
+    @apply hover:bg-white/60 dark:hover:bg-white/10;
     @apply hover:-translate-y-0.5;
+    @apply shadow-sm;
 }
 </style>

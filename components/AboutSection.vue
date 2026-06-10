@@ -100,7 +100,7 @@ const interests = [
 
 .about {
     @apply py-24 px-6;
-    @apply bg-white dark:bg-zinc-900;
+    @apply bg-transparent;
 }
 
 .about__container {
@@ -115,9 +115,10 @@ const interests = [
     @apply inline-block;
     @apply px-4 py-1.5 rounded-full;
     @apply text-xs font-semibold uppercase tracking-widest;
-    @apply bg-indigo-50 dark:bg-indigo-950/50;
+    @apply bg-white/40 dark:bg-white/5;
     @apply text-indigo-600 dark:text-indigo-400;
-    @apply border border-indigo-100 dark:border-indigo-900;
+    @apply border border-white/50 dark:border-white/10;
+    @apply backdrop-blur-md;
     @apply mb-4;
     font-family: 'Inter', sans-serif;
 }
@@ -144,15 +145,18 @@ const interests = [
 .about__card {
     @apply p-6 md:p-8;
     @apply rounded-2xl;
-    @apply bg-zinc-50 dark:bg-zinc-800/50;
-    @apply border border-zinc-100 dark:border-zinc-800;
+    @apply bg-white/50 dark:bg-zinc-900/40;
+    @apply border border-white/50 dark:border-white/10;
     @apply transition-all duration-300;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.06);
 }
 
 .about__card:hover {
-    @apply border-zinc-200 dark:border-zinc-700;
-    @apply shadow-lg;
+    @apply border-white/70 dark:border-white/20;
     transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.12);
 }
 
 .about__card--background {
@@ -190,14 +194,15 @@ const interests = [
     @apply aspect-square;
     @apply p-4;
     @apply rounded-xl;
-    @apply bg-white dark:bg-zinc-800;
-    @apply border border-zinc-100 dark:border-zinc-700;
+    @apply bg-white/40 dark:bg-white/5;
+    @apply border border-white/50 dark:border-white/10;
+    @apply backdrop-blur-sm;
     @apply transition-all duration-200;
     @apply cursor-default;
 }
 
 .about__skill:hover {
-    @apply border-indigo-200 dark:border-indigo-800;
+    @apply border-indigo-300/60 dark:border-indigo-500/30;
     @apply shadow-sm;
     transform: translateY(-1px);
 }
@@ -214,13 +219,14 @@ const interests = [
     @apply flex items-center gap-3;
     @apply px-4 py-3;
     @apply rounded-xl;
-    @apply bg-white dark:bg-zinc-800;
-    @apply border border-zinc-100 dark:border-zinc-700;
+    @apply bg-white/40 dark:bg-white/5;
+    @apply border border-white/50 dark:border-white/10;
+    @apply backdrop-blur-sm;
     @apply transition-all duration-200;
 }
 
 .about__interest:hover {
-    @apply border-indigo-200 dark:border-indigo-800;
+    @apply border-indigo-300/60 dark:border-indigo-500/30;
     transform: translateX(4px);
 }
 
