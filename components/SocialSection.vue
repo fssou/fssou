@@ -54,13 +54,13 @@ const socialLinks = [twitter, github, linkedin, email, medium, figma, codepen]
 <style scoped>
 @reference "~/assets/css/main.tw.reference.css";
 
-.social { @apply py-24 px-6 bg-white dark:bg-zinc-900; }
+.social { @apply py-24 px-6 bg-transparent; }
 .social__container { @apply max-w-6xl mx-auto; }
 .social__header { @apply text-center mb-16; }
 .social__label {
     @apply inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest;
-    @apply bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400;
-    @apply border border-indigo-100 dark:border-indigo-900 mb-4;
+    @apply bg-white/40 dark:bg-white/5 text-indigo-600 dark:text-indigo-400;
+    @apply border border-white/50 dark:border-white/10 backdrop-blur-md mb-4;
     font-family: 'Inter', sans-serif;
 }
 .social__title {
@@ -72,15 +72,18 @@ const socialLinks = [twitter, github, linkedin, email, medium, figma, codepen]
 }
 .social__card {
     @apply flex items-center gap-4 p-5 rounded-2xl;
-    @apply bg-zinc-50 dark:bg-zinc-800/50;
-    @apply border border-zinc-100 dark:border-zinc-800;
+    @apply bg-white/50 dark:bg-zinc-900/40;
+    @apply border border-white/50 dark:border-white/10;
     @apply cursor-pointer transition-all duration-300;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.06);
 }
 .social__card:hover {
-    @apply border-indigo-200 dark:border-indigo-800;
-    @apply shadow-lg;
-    @apply bg-indigo-50 dark:bg-indigo-950/30;
+    @apply border-indigo-300/60 dark:border-indigo-500/30;
+    @apply bg-white/70 dark:bg-indigo-950/30;
     transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.14);
 }
 .social__card-icon {
     @apply text-2xl text-zinc-600 dark:text-zinc-400;
