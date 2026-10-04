@@ -5,7 +5,7 @@ const name = "Franclin"
 const headline = "Engenheiro de Software"
 const email = "f@francl.in"
 const gravatarURL = `https://gravatar.com/avatar/${sha256(String(email).trim().toLowerCase())}?s=256`
-const summary = "Movido por uma paixão inabalável por tecnologia e inovação, minha jornada profissional é guiada pelo desejo profundo de usar a tecnologia como uma força transformadora, capaz de tocar vidas e deixar um impacto duradouro no mundo."
+const summary = "Apaixonado por tecnologia desde a adolescência, gosto de entender como as coisas funcionam e de transformar isso em código que resolve problemas de verdade. No tempo livre, jogo videogame e assisto séries e filmes de ficção científica."
 const location = "Rio de Janeiro, Brasil"
 const timezone = "UTC/GMT-3"
 
